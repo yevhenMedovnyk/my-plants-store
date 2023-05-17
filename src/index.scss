@@ -1,0 +1,51 @@
+@import "./styles/_variables.scss";
+
+@font-face {
+	font-family: "CeraPro";
+	src: local("CeraPro"), url("./assets/fonts/CeraPro-Light.ttf") format("truetype");
+	font-weight: 300;
+}
+@font-face {
+	font-family: "CeraPro";
+	src: local("CeraPro"), url("./assets/fonts/CeraPro-Regular.ttf") format("truetype");
+	font-weight: 400;
+}
+@font-face {
+	font-family: "CeraPro";
+	src: local("CeraPro"), url("./assets/fonts/CeraPro-Medium.ttf") format("truetype");
+	font-weight: 500;
+}
+@font-face {
+	font-family: "CeraPro";
+	src: local("CeraPro"), url("./assets/fonts/CeraPro-Bold.ttf") format("truetype");
+	font-weight: 700;
+}
+@font-face {
+	font-family: "CeraPro";
+	src: local("CeraPro"), url("./assets/fonts/CeraPro-Black.ttf") format("truetype");
+	font-weight: 900;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: CeraPro;
+	font-size: 1.4rem;
+	color: $secondary-font-color;
+}
+html,
+body,
+#root {
+	height: 100%;
+}
+#root {
+	max-width: 123rem;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
