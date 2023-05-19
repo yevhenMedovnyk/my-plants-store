@@ -1,0 +1,54 @@
+@import "./../../../styles/variables";
+
+.btn-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	background-color: $accent-color;
+	border-radius: 6px;
+	color: #ffffff;
+	font-size: 1.6rem;
+	font-weight: 500;
+	padding: 0.52em 1.06em;
+	transition: 0.3s;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+.btn-wrapper.transparent {
+	background-color: transparent;
+	color: $accent-color;
+	border: 1px solid $accent-color;
+	text-transform: uppercase;
+	font-weight: 700;
+	height: 4rem;
+	img {
+		svg {
+			path {
+				fill: green;
+			}
+		}
+	}
+}
+.btn-wrapper.plantItem {
+	color: #ffffff;
+	background-color: $accent-color;
+	text-transform: uppercase;
+	font-weight: 700;
+	height: 4rem;
+}
+.btn-wrapper.plusMinus {
+	justify-content: center;
+	color: #ffffff;
+	background-color: $accent-color;
+	text-transform: uppercase;
+	font-weight: 700;
+	height: 4rem;
+	width: 3.3rem;
+	border-radius: 3.1rem;
+}
+.btn-wrapper.slider-btn {
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 0.63em 1.6em;
+}

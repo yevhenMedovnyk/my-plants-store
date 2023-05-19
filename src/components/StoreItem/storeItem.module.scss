@@ -1,0 +1,55 @@
+@import "./../../styles/variables";
+
+.image {
+	position: relative;
+	background-color: $secondary-bg-color;
+	margin-bottom: 1.2rem;
+	padding-bottom: 1.5rem;
+	overflow: hidden;
+
+	&:hover {
+		.ctaImg {
+			display: flex;
+		}
+	}
+}
+.mainImg {
+	width: 100%;
+	transition: 0.3s;
+	cursor: pointer;
+	&:hover {
+		transform: scale(1.03);
+	}
+}
+.ctaImg {
+	position: absolute;
+	bottom: 1.4rem;
+	left: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 2.6rem;
+	transition: 0.3s;
+	display: none;
+
+	svg {
+		width: 2rem;
+		height: 2rem;
+		cursor: pointer;
+		&:hover {
+			path {
+				fill: green;
+			}
+		}
+	}
+}
+.title {
+	margin-bottom: 0.6rem;
+	cursor: pointer;
+}
+.price {
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: $accent-color;
+}

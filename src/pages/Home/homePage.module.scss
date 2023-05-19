@@ -1,0 +1,20 @@
+.wrapper {
+	padding: 3rem 0 8.333% 0;
+}
+.shopWrapper {
+	display: flex;
+}
+.filterBlock {
+	width: 26%;
+	flex-shrink: 0;
+	background-color: green;
+	margin-right: 3.3rem;
+}
+.mainBlock {
+	width: 100%;
+}
+.storeItems {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+	gap: 7rem 3.3rem;
+}

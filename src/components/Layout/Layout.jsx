@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import style from "./layout.module.scss";
 
-export default function Layout() {
+const Layout = () => {
 	return (
 		<div className={style.wrapper}>
 			<Header />
@@ -14,4 +14,5 @@ export default function Layout() {
 			<Footer />
 		</div>
 	);
-}
+};
+export default Layout;

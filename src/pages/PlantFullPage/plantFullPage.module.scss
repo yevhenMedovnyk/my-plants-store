@@ -1,0 +1,63 @@
+@import "./../../styles/variables";
+
+
+.wrapper {
+	display: flex;
+	padding: 4.3rem 0 12.8rem 0;
+	gap: 4.42%;
+}
+.image {
+	flex: 1;
+	background-color: $secondary-bg-color;
+	img{
+		width: 100%;
+	}
+}
+.content {
+	flex: 1;
+}
+.head{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 1.3rem;
+	margin-bottom: 1.5rem;
+	border-bottom: 0.3px solid rgba(70, 163, 88, 0.5)
+}
+.titleBlock{
+	h1{
+		font-size: 2.8rem;
+		font-weight: 700;
+		color: $primary-font-color;
+		margin-bottom: 0.6em;
+	}
+	span{
+		font-size: 2.2rem;
+		font-weight: 700;
+		color: $accent-color;
+	}
+}
+.descTitle{
+	font-weight: 500;
+	color: $primary-font-color;
+	margin-bottom: 0.625em;
+}
+.description{
+	font-size: 1.4rem;
+	line-height: calc(24 / 14);
+	margin-bottom: 1.71em;
+}
+.action{
+	display: flex;
+	column-gap: 1rem;
+}
+.quantity{
+	display: flex;
+	align-items: center;
+	column-gap: 2.3rem;
+	margin-right: 1.6rem;
+	span{
+		font-size: 2rem;
+		color: $primary-font-color;
+		font-weight: 500;
+	}
+}

@@ -2,8 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "./../src/components/Layout/Layout";
 import HomePage from "./pages/Home/HomePage";
-import ShopPage from "./pages/ShopPage/ShopPage";
 import "./App.css";
+import PlantCarePage from "./pages/PlantCarePage/PlantCarePage";
+import BlogsPage from "./pages/Blogs/BlogsPage";
+import ShopItemPage from "./pages/PlantFullPage/PlantFullPage";
 
 export const router = createBrowserRouter([
 	{
@@ -11,23 +13,27 @@ export const router = createBrowserRouter([
 		element: <Layout />,
 		children: [
 			{
-				path: "/",
 				element: <HomePage />,
+				index: true,
 			},
 			{
-				path: "/shop",
-				element: <ShopPage />,
+				path: "/plant/:id",
+				element: <ShopItemPage />,
+			},
+			{
+				path: "/plantCare",
+				element: <PlantCarePage />,
+			},
+			{
+				path: "/blogs",
+				element: <BlogsPage />,
 			},
 		],
 	},
 ]);
 
-function App() {
-	return (
-		<>
-			<Layout />
-		</>
-	);
-}
+const App = () => {
+	return <></>;
+};
 
 export default App;

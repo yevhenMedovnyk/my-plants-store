@@ -35,9 +35,10 @@ html {
 	font-size: 62.5%;
 }
 body {
-	font-family: CeraPro;
-	font-size: 1.4rem;
+	font-family: "CeraPro", sans-serif;
+	font-size: 1.6rem;
 	color: $secondary-font-color;
+	background-color: $primary-bg-color;
 }
 html,
 body,
@@ -48,4 +49,22 @@ body,
 	max-width: 123rem;
 	margin: 0 auto;
 	padding: 0 1.5rem;
+}
+ul,
+li {
+	list-style: none;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+button {
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+h1,h1,h3,h4,h5{
+	font-size: inherit;
+	font-weight: inherit;
 }
