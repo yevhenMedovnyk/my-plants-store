@@ -7,7 +7,13 @@ import cartIcon from "./../../assets/images/cartIcon.svg";
 import Button from "../UI/Button/Button";
 //import logoutIcon from "./../../assets/images/Logout.svg";
 
+import { useSelector } from "react-redux";
+
 const Header = () => {
+	const { cart } = useSelector(state => state.cart);
+
+	const cartItemsCount = cart.length;
+
 	return (
 		<header className={style.header}>
 			<Logo />
@@ -16,7 +22,7 @@ const Header = () => {
 				<img className={style.searchIcon} src={searchIcon} alt='search' />
 				<div className={style.cartIcon}>
 					<img src={cartIcon} alt='cart' />
-					<span>6</span>
+					{!!cartItemsCount && <span>{cartItemsCount}</span>}
 				</div>
 				<Button text='Login' />
 			</div>

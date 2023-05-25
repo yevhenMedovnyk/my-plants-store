@@ -1,15 +1,26 @@
-import style from "./storeItem.module.scss";
-
-import img from "./../../assets/images/welcome/main-img.png";
 import { Link } from "react-router-dom";
+import style from "./shopItem.module.scss";
 
-const StoreItem = ({ id, plant_name, price, image_link }) => {
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../store/Slices/cartSlice";
+
+const ShopItem = props => {
+	const dispatch = useDispatch();
+	const { id, plant_name, price, image_link } = props;
+
+	const onClickAddToCart = () => {
+		dispatch(addItemToCart({ ...props }));
+	};
+
 	return (
-		<Link to={`/plant/${id}`} className={style.wrapper}>
+		<div className={style.wrapper}>
 			<div className={style.image}>
-				<img className={style.mainImg} src={img} alt={plant_name} />
+				<Link to={`/plant/${id}`}>
+					<img className={style.mainImg} src={image_link} alt={plant_name} />
+				</Link>
 				<div className={style.ctaImg}>
 					<svg
+						onClick={onClickAddToCart}
 						width='25'
 						height='24'
 						viewBox='0 0 25 24'
@@ -35,12 +46,14 @@ const StoreItem = ({ id, plant_name, price, image_link }) => {
 					</svg>
 				</div>
 			</div>
-			<h1 className={style.title}>{plant_name}</h1>
+			<Link to={`/plant/${id}`}>
+				<h1 className={style.title}>{plant_name}</h1>
+			</Link>
 			<div className={style.price}>
 				<span>${price}</span>
 			</div>
-		</Link>
+		</div>
 	);
 };
 
-export default StoreItem;
+export default ShopItem;

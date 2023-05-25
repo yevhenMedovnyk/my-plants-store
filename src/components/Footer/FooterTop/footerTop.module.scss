@@ -1,0 +1,26 @@
+@import "./../../../styles/variables";
+
+.top {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	background-color: $secondary-bg-color;
+	padding: 2.5rem 2.5rem 3rem 2.5rem;
+	gap: 3rem 2.7rem;
+}
+.join {
+	margin-left: 2.9%;
+	flex: 1;
+	h5{
+		font-size: 1.8rem;
+		font-weight: 700;
+		color: $primary-font-color;
+		margin-bottom: 0.9em;
+	}
+	p{
+		font-size: 1.3rem;
+		line-height: calc(22 / 13);
+		margin-top: 1.3em;
+		max-width: 40rem;
+	}
+}

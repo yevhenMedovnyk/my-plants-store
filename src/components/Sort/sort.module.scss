@@ -4,7 +4,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1.4rem 0;
+	padding: 1.4rem 2rem;
 }
 .title {
 	position: relative;
@@ -30,22 +30,43 @@
 		transform: scale(1);
 	}
 }
-.sortBlock{
+.sortBlock {
 	position: relative;
 }
 .sortPopup {
 	z-index: 4;
 	position: absolute;
 	right: 0;
-	bottom: -7rem;
-	border: .5px solid $accent-color;
-	border-radius: .3rem;
-	li{
-		padding: 0.3em;
+	top: -7rem;
+	border: 0.5px solid $accent-color;
+	border-radius: 0.3rem;
+	li {
+		padding: .3em 0.6em;
 		cursor: pointer;
-		transition: .3s;
-		&:hover{
+		transition: 0.3s;
+		&:hover {
 			background-color: rgb(200, 237, 200);
 		}
+	}
+	.active {
+		background-color: rgb(200, 237, 200);
+		color: $primary-font-color;
+	}
+}
+.sortTitle {
+	color: $primary-font-color;
+	label {
+		cursor: pointer;
+	}
+
+	input {
+		width: 8rem;
+		outline: none;
+		border: none;
+		color: $accent-color;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		padding-left: 0.5em;
+		cursor: pointer;
 	}
 }

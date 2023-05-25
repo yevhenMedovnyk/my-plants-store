@@ -1,14 +1,19 @@
-import style from "./plantFullPage.module.scss";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../store/Slices/cartSlice";
 
+import style from "./plantFullPage.module.scss";
 import Button from "../../components/UI/Button/Button";
+import axios from "axios";
+
 import heartGreen from "./../../assets/images/heart-green.svg";
 import img from "./../../assets/images/welcome/main-img.png";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const ShopItemPage = () => {
 	const [item, setItem] = useState({});
+	const dispatch = useDispatch();
+
 	const { id } = useParams();
 	const { plant_name, image_link, description, care_instructions, categories, size, price } = item;
 
@@ -23,12 +28,14 @@ const ShopItemPage = () => {
 		fetchData();
 	}, []);
 
-	console.log(item);
+	const onClickAddToCart = () => {
+		dispatch(addItemToCart({ id, plant_name, price, image_link }));
+	};
 
 	return (
 		<div className={style.wrapper}>
 			<div className={style.image}>
-				<img src={img} alt='' />
+				<img src={image_link} alt={plant_name} />
 			</div>
 			<div className={style.content}>
 				<div className={style.head}>
@@ -51,7 +58,7 @@ const ShopItemPage = () => {
 						<Button text='+' classes='plusMinus' />
 					</div>
 					<Button text='Buy NOW' classes='plantItem' />
-					<Button text='Add to cart' classes='transparent' />
+					<Button text='Add to cart' classes='transparent' onClick={onClickAddToCart} />
 					<Button img={heartGreen} classes='transparent' />
 				</div>
 			</div>

@@ -1,0 +1,33 @@
+@import "./../../../styles/variables";
+
+.input {
+	display: flex;
+	max-width: 35rem;
+	width: 100%;
+	background-color: #ffffff;
+	border-radius: 0.6rem 0.6rem 0.6rem 0.6rem;
+	overflow: hidden;
+
+	input {
+		flex: 1;
+		outline: none;
+		border: none;
+		padding: 0em 0.67em;
+		color: $primary-font-color;
+		&:placeholder {
+			color: #acacac;
+			font-size: 1.4rem;
+		}
+	}
+	button {
+		font-size: 1.8rem;
+		font-weight: 700;
+		color: #ffffff;
+		padding: 0.66em 1.39em;
+		background-color: $accent-color;
+		transition: 0.3s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
