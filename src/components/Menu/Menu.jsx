@@ -14,6 +14,9 @@ const Menu = () => {
 				<li>
 					<NavLink to='/blogs'>Blogs</NavLink>
 				</li>
+				<li>
+					<NavLink to='/cart'>Shopping cart</NavLink>
+				</li>
 			</ul>
 		</nav>
 	);

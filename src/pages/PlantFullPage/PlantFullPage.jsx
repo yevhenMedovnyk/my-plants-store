@@ -8,15 +8,14 @@ import Button from "../../components/UI/Button/Button";
 import axios from "axios";
 
 import heartGreen from "./../../assets/images/heart-green.svg";
-import img from "./../../assets/images/welcome/main-img.png";
 
 const ShopItemPage = () => {
 	const [item, setItem] = useState({});
+	const [count, setCount] = useState(1);
 	const dispatch = useDispatch();
 
 	const { id } = useParams();
 	const { plant_name, image_link, description, care_instructions, categories, size, price } = item;
-
 
 	const fetchData = async () => {
 		const res = await axios.get(`https://plants-api-dkpe.onrender.com/plants/${id}`);
@@ -28,7 +27,16 @@ const ShopItemPage = () => {
 	}, []);
 
 	const onClickAddToCart = () => {
-		dispatch(addItemToCart({ id, plant_name, price, image_link }));
+		dispatch(addItemToCart({ id, plant_name, price, image_link, count }));
+	};
+	const handleMinusClick = () => {
+		if (count <=1) {
+			return;
+		}
+		setCount(prev => prev - 1);
+	};
+	const handlePlusClick = () => {
+		setCount(prev => prev + 1);
 	};
 
 	return (
@@ -52,9 +60,9 @@ const ShopItemPage = () => {
 				<p className={style.description}>{description}</p>
 				<div className={style.action}>
 					<div className={style.quantity}>
-						<Button text='-' classes='plusMinus' />
-						<span>1</span>
-						<Button text='+' classes='plusMinus' />
+						<Button text='-' classes='plusMinus' onClick={handleMinusClick} />
+						<span>{count}</span>
+						<Button text='+' classes='plusMinus' onClick={handlePlusClick} />
 					</div>
 					<Button text='Buy NOW' classes='plantItem' />
 					<Button text='Add to cart' classes='transparent' onClick={onClickAddToCart} />

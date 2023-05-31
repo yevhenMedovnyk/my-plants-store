@@ -8,6 +8,7 @@ import Button from "../UI/Button/Button";
 //import logoutIcon from "./../../assets/images/Logout.svg";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const { cart } = useSelector(state => state.cart);
@@ -20,10 +21,10 @@ const Header = () => {
 			<Menu />
 			<div className={style.rightBlock}>
 				<img className={style.searchIcon} src={searchIcon} alt='search' />
-				<div className={style.cartIcon}>
+				<Link to="/cart" className={style.cartIcon}>
 					<img src={cartIcon} alt='cart' />
 					{!!cartItemsCount && <span>{cartItemsCount}</span>}
-				</div>
+				</Link>
 				<Button text='Login' />
 			</div>
 		</header>

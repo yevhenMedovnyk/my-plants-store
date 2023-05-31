@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/Slices/mainSlice";
 
 import "./pagination.scss";
-import { pageLimit } from "../../pages/Home/HomePage";
+import { pageLimit } from "../../pages/HomePage/HomePage";
 
 function Pagination() {
 	const dispatch = useDispatch();
