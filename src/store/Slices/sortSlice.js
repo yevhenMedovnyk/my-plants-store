@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	order: "asc",
 	sortby: "price",
+	category: "All Plants",
 };
 
 const sortSlice = createSlice({
@@ -13,8 +14,11 @@ const sortSlice = createSlice({
 			state.order = action.payload.order;
 			state.sortby = action.payload.sortby;
 		},
+		changeCategory(state, action) {
+			state.category = action.payload;
+		},
 	},
 });
 
-export const { changeSortType } = sortSlice.actions;
+export const { changeSortType, changeCategory } = sortSlice.actions;
 export default sortSlice.reducer;

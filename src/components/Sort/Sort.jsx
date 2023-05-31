@@ -1,15 +1,25 @@
 import { useState } from "react";
 import style from "./sort.module.scss";
 
-import { useDispatch } from "react-redux";
-import { changeSortType } from "../../store/Slices/sortSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCategory, changeSortType } from "../../store/Slices/sortSlice";
+import { setCurrentPage } from "../../store/Slices/mainSlice";
 
 const sortValueArr = [
 	{ name: "Min price", order: "asc", sortby: "price" },
 	{ name: "Max price", order: "desc", sortby: "price" },
 ];
+const categories = [
+	"All Plants",
+	"House Plants",
+	"Succulents",
+	"Terrariums",
+	"Seeds",
+	"Accessories",
+];
 
 const Sort = () => {
+	const { category } = useSelector(state => state.sort);
 	const dispatch = useDispatch();
 	const [sortValue, setSortValue] = useState(sortValueArr[0].name);
 	const [sortOpened, setSortOpened] = useState(false);
@@ -19,10 +29,24 @@ const Sort = () => {
 		dispatch(changeSortType(el));
 		setSortOpened(false);
 	};
+	const handleCategoryClick = category => {
+		dispatch(changeCategory(category));
+		dispatch(setCurrentPage(0));
+	};
 
 	return (
 		<div className={style.wrapper}>
-			<span className={style.title}>All plants</span>
+			<ul className={style.filter}>
+				{categories.map(categoryName => (
+					<li
+						onClick={() => handleCategoryClick(categoryName)}
+						className={[style.category, category === categoryName ? style.active : ""].join(" ")}
+						key={categoryName}
+					>
+						{categoryName}
+					</li>
+				))}
+			</ul>
 			<div className={style.sortBlock}>
 				<div className={style.sortTitle}>
 					<label>
@@ -37,7 +61,7 @@ const Sort = () => {
 				</div>
 				{sortOpened && (
 					<ul className={style.sortPopup}>
-						{sortValueArr.map((el, _index) => (
+						{sortValueArr.map(el => (
 							<li
 								className={el.name === sortValue ? style.active : ""}
 								key={el.name}

@@ -17,10 +17,9 @@ const ShopItemPage = () => {
 	const { id } = useParams();
 	const { plant_name, image_link, description, care_instructions, categories, size, price } = item;
 
-	console.log(typeof id);
 
 	const fetchData = async () => {
-		const res = await axios.get(`https://646481ac043c103502bb2e16.mockapi.io/plants/${id}`);
+		const res = await axios.get(`https://plants-api-dkpe.onrender.com/plants/${id}`);
 		setItem(res.data);
 	};
 

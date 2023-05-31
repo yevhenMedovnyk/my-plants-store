@@ -7,25 +7,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPlants } from "../../store/Slices/mainSlice";
 import Pagination from "../../components/Pagination/Pagination";
 
+
+export const pageLimit = 16
+
+
 const HomePage = () => {
 	const dispatch = useDispatch();
 	const { shopItems, currentPage } = useSelector(state => state.plants);
-	const { order, sortby } = useSelector(state => state.sort);
+	const { order, sortby, category } = useSelector(state => state.sort);
+	const filterByCategory = () => {
+		if (category === "All Plants") {
+			return "";
+		}
+		return `&categories_like=${category}`;
+	};
 
 	useEffect(() => {
 		dispatch(
 			fetchPlants(
-				`https://646481ac043c103502bb2e16.mockapi.io/plants?
-				page=${currentPage}&limit=9&sortby=${sortby}&order=${order}`,
+				`https://plants-api-dkpe.onrender.com/plants?
+				_page=${currentPage + 1}&_limit=${pageLimit}&_sort=${sortby}&_order=${order}${filterByCategory()}&_start=0&_end=1`,
 			),
 		);
-	}, [currentPage, order, sortby]);
+	}, [currentPage, order, sortby, category]);
 
 	return (
 		<div className={style.wrapper}>
 			<MainSlider />
 			<div className={style.shopWrapper}>
-				<div className={style.filterBlock}></div>
 				<div className={style.mainBlock}>
 					<Sort />
 					<div className={style.storeItems}>

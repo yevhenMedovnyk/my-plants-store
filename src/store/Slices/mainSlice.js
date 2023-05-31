@@ -3,9 +3,10 @@ import axios from "axios";
 
 export const fetchPlants = createAsyncThunk(
 	"main/fetchPlants",
-	async (url, { rejectWithValue }) => {
+	async (url, { rejectWithValue, dispatch }) => {
 		try {
 			const res = await axios.get(url);
+			dispatch(setTotalCount(res.headers.get("X-Total-Count")));
 			return res.data;
 		} catch (error) {
 			console.log(error.message);
@@ -16,7 +17,8 @@ export const fetchPlants = createAsyncThunk(
 
 const initialState = {
 	shopItems: [],
-	currentPage: 1,
+	currentPage: 0,
+	totalCount: 0,
 	status: null,
 	error: null,
 };
@@ -27,6 +29,9 @@ export const mainSlice = createSlice({
 	reducers: {
 		setCurrentPage(state, action) {
 			state.currentPage = action.payload;
+		},
+		setTotalCount(state, action) {
+			state.totalCount = action.payload;
 		},
 	},
 	extraReducers: {
@@ -45,5 +50,5 @@ export const mainSlice = createSlice({
 	},
 });
 
-export const { setCurrentPage } = mainSlice.actions;
+export const { setCurrentPage, setTotalCount } = mainSlice.actions;
 export default mainSlice.reducer;
