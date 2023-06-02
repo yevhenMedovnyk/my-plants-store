@@ -1,0 +1,33 @@
+@import "./../../styles/variables";
+
+
+.wrapper {
+	justify-content: center;
+	padding: 10rem 30rem;
+	h1 {
+		font-size: 3.6rem;
+		font-weight: 700;
+		text-align: center;
+		margin-top: 1em;
+	}
+	a {
+		display: block;
+		text-align: center;
+		font-weight: 600;
+		position: relative;
+		font-size: 1.6rem;
+		line-height: calc(20 / 16);
+		transition: 0.3s;
+		&:hover {
+			color: $accent-color;
+		}
+	}
+}
+.image {
+	width: 20rem;
+	overflow: hidden;
+	margin: 0 auto;
+	img {
+		width: 100%;
+	}
+}
