@@ -1,0 +1,52 @@
+@import "./../../styles/variables";
+
+
+.totalsTitleContainer {
+	display: flex;
+	align-items: center;
+	min-height: 4rem;
+	width: 100%;
+	margin-bottom: 1.2rem;
+	border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
+}
+.coupon {
+	span {
+		display: block;
+		font-size: 1.4rem;
+		margin-bottom: 0.57em;
+	}
+	margin-bottom: 3rem;
+}
+.subTotal {
+	display: flex;
+	justify-content: space-between;
+	p {
+		font-size: 1.5rem;
+		margin-bottom: 1em;
+	}
+	span {
+		font-size: 1.8rem;
+		font-weight: 500;
+	}
+}
+.discount {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.5rem;
+	margin-bottom: 1.4em;
+}
+
+.total {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 700;
+
+	p {
+		font-size: 1.6rem;
+		margin-bottom: 1.8em;
+	}
+	span {
+		font-size: 1.8rem;
+		color: $accent-color;
+	}
+}

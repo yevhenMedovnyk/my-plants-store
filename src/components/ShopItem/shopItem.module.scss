@@ -2,7 +2,6 @@
 
 .image {
 	position: relative;
-	//background-color: $secondary-bg-color;
 	margin-bottom: 1.2rem;
 	padding-bottom: 1.5rem;
 	overflow: hidden;
@@ -50,6 +49,14 @@
 			path {
 				fill: green;
 			}
+		}
+	}
+}
+.ctaImg.inCart {
+	display: flex;
+	.cartIcon {
+		path {
+			fill: green;
 		}
 	}
 }

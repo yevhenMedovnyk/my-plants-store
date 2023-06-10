@@ -1,9 +1,24 @@
+import { useDispatch } from "react-redux";
 import Button from "../UI/Button/Button";
 import style from "./cartItem.module.scss";
+import { decrementCounter, incrementCounter, removeFromCart } from "../../store/Slices/cartSlice";
 
-const CartItem = ({ image_link, plant_name, price, count }) => {
+const CartItem = ({ image_link, plant_name, price, count, id, classes }) => {
+	const dispatch = useDispatch();
+
+	const handlePlusClick = () => {
+		dispatch(incrementCounter(id));
+	};
+	const handleMinusClick = () => {
+		dispatch(decrementCounter(id));
+	};
+	const removeItem = () => {
+		dispatch(removeFromCart(id));
+	};
+	const totalSum = price * count;
+
 	return (
-		<div className={style.wrapper}>
+		<div className={[style.wrapper, classes].join(" ")}>
 			<div className={style.image}>
 				<img src={image_link} alt={plant_name} />
 			</div>
@@ -11,13 +26,14 @@ const CartItem = ({ image_link, plant_name, price, count }) => {
 				<h2 className={style.title}>{plant_name}</h2>
 			</div>
 			<span className={style.price}>${price}</span>
+			<div className={style.checkoutQuantity}>(x {count})</div>
 			<div className={style.quantity}>
-				<Button text='-' classes='plusMinusCart' onClick={"handleMinusClick"} />
+				<Button text='-' classes='plusMinusCart' onClick={handleMinusClick} />
 				<span>{count}</span>
-				<Button text='+' classes='plusMinusCart' onClick={"handlePlusClick"} />
+				<Button text='+' classes='plusMinusCart' onClick={handlePlusClick} />
 			</div>
-			<span className={style.total}>$99</span>
-			<div className={style.removeIcon}>
+			<span className={style.total}>${totalSum.toFixed(2)}</span>
+			<div className={style.removeIcon} onClick={removeItem}>
 				<svg
 					width='24'
 					height='24'

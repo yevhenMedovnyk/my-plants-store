@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../store/Slices/cartSlice";
 
@@ -10,27 +10,20 @@ import axios from "axios";
 import heartGreen from "./../../assets/images/heart-green.svg";
 
 const ShopItemPage = () => {
-	const [item, setItem] = useState({});
+	const item = useLoaderData();
+
 	const [count, setCount] = useState(1);
 	const dispatch = useDispatch();
-
 	const { id } = useParams();
+
 	const { plant_name, image_link, description, care_instructions, categories, size, price } = item;
-
-	const fetchData = async () => {
-		const res = await axios.get(`https://plants-api-dkpe.onrender.com/plants/${id}`);
-		setItem(res.data);
-	};
-
-	useEffect(() => {
-		fetchData();
-	}, []);
 
 	const onClickAddToCart = () => {
 		dispatch(addItemToCart({ id, plant_name, price, image_link, count }));
 	};
+
 	const handleMinusClick = () => {
-		if (count <=1) {
+		if (count <= 1) {
 			return;
 		}
 		setCount(prev => prev - 1);
@@ -71,6 +64,11 @@ const ShopItemPage = () => {
 			</div>
 		</div>
 	);
+};
+
+export const fetchData = async ({ params }) => {
+	const res = await axios.get(`https://plants-api-dkpe.onrender.com/plants/${params.id}`);
+	return res.data;
 };
 
 export default ShopItemPage;

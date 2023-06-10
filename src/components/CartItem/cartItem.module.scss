@@ -31,8 +31,11 @@
 	font-weight: 500;
 	margin-right: 11.8%;
 }
-
+.checkoutQuantity{
+	display: none;
+}
 .quantity {
+	min-width: 8rem;
 	display: flex;
 	align-items: center;
 	gap: 1.4rem;
@@ -42,6 +45,7 @@
 	}
 }
 .total {
+	min-width: 6.9rem;
 	font-weight: 700;
 	margin-right: 6.4%;
 	color: $accent-color;
@@ -53,5 +57,28 @@
 		path {
 			stroke: green;
 		}
+	}
+}
+.wrapper:global(.checkout) {
+	.price {
+		display: none;
+	}
+	.total{
+		margin-right: 1.6rem;
+		text-align: right;
+	}
+	.removeIcon{
+		display: none;
+	}
+	.quantity{
+		display: none;
+	}
+	.checkoutQuantity{
+		display: block;
+		margin-right: 3.7rem;
+		font-size: 1.4rem;
+	}
+	.title{
+		font-size: 1.6rem;
 	}
 }

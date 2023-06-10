@@ -1,0 +1,41 @@
+@import "./../../styles/variables";
+
+.address {
+	flex: 1;
+	margin-right: 6.3%;
+	h2 {
+		margin-bottom: 1.2em;
+		font-size: 1.7rem;
+		font-weight: 700;
+		color: $primary-font-color;
+	}
+}
+.inputs {
+	display: grid;
+	grid-template: 1fr / 1fr 1fr;
+	gap: 3rem 2.2rem;
+	
+}
+.textarea {
+	display: flex;
+	flex-direction: column;
+
+	label {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: $primary-font-color;
+	}
+	textarea {
+		max-width: 35rem;
+		min-height: 15rem;
+		padding: 1em;
+		resize: none;
+		border: 1px solid #eaeaea;
+		border-radius: 3px;
+		&:focus{
+			border-color: $accent-color;
+			outline: none;
+		}
+		
+	}
+}

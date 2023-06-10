@@ -3,7 +3,7 @@
 .input {
 	display: flex;
 	max-width: 35rem;
-	width: 100%;
+	min-width: 100%;
 	background-color: #ffffff;
 	border-radius: 0.6rem 0.6rem 0.6rem 0.6rem;
 	overflow: hidden;
@@ -13,11 +13,12 @@
 		outline: none;
 		border: none;
 		padding: 0em 0.67em;
-		color: $primary-font-color;
+		color: #A5A5A5;
 		&:placeholder {
 			color: #acacac;
 			font-size: 1.4rem;
 		}
+		
 	}
 	button {
 		font-size: 1.8rem;
@@ -33,4 +34,9 @@
 }
 .input.cartInput {
 	outline: 1px solid $accent-color;
+	min-height: 4rem;
+	
+	button{
+		display: none;
+	}
 }

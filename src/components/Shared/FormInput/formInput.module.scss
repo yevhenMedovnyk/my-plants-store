@@ -1,0 +1,48 @@
+@import "./../../../styles/variables";
+
+.formInput {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	label {
+		width: max-content;
+		position: relative;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: $primary-font-color;
+	}
+	label.required::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: -11px;
+			background: url("./../../../assets/images/required.svg") no-repeat;
+			width: 0.8rem;
+			height: 0.8rem;
+		}
+	
+
+	input {
+		height: 4rem;
+		border: 1px solid #eaeaea;
+		border-radius: 0.3rem;
+		font-size: 1.4rem;
+		padding: 0.95em;
+		&::placeholder {
+			color: #a5a5a5;
+		}
+		&:focus{
+			border-color: $accent-color;
+			outline: none;
+		}
+	}
+	span {
+		color: red;
+		font-size: 12px;
+		display: none;
+		margin: 0.7rem .8rem;
+	}
+}
+input:invalid[focused="true"] ~ span {
+	display: block;
+}

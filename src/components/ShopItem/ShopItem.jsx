@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
 import style from "./shopItem.module.scss";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../store/Slices/cartSlice";
+import { useEffect, useState } from "react";
 
 const ShopItem = props => {
+	
 	const dispatch = useDispatch();
+	const { cart } = useSelector(state => state.cart);
 	const { id, plant_name, price, image_link } = props;
+	const [inCart, setInCart] = useState(false);
+	
+	useEffect(() => {
+		if (cart.some(item => item.id === id)) {
+			setInCart(true);
+		}
+	}, [cart]);
 
 	const onClickAddToCart = () => {
-		dispatch(addItemToCart({ ...props }));
+		dispatch(addItemToCart({ ...props, count: 1 }));
 	};
 
 	return (
@@ -18,8 +28,9 @@ const ShopItem = props => {
 				<Link to={`/plant/${id}`}>
 					<img className={style.mainImg} src={image_link} alt={plant_name} />
 				</Link>
-				<div className={style.ctaImg}>
+				<div className={[style.ctaImg, inCart ? style.inCart : ""].join(" ")}>
 					<svg
+						className={style.cartIcon}
 						onClick={onClickAddToCart}
 						width='25'
 						height='24'
@@ -33,6 +44,7 @@ const ShopItem = props => {
 						/>
 					</svg>
 					<svg
+						className={style.inFavorite}
 						width='20'
 						height='20'
 						viewBox='0 0 20 20'
