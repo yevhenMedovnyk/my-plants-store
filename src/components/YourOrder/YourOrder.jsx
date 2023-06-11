@@ -6,9 +6,7 @@ import Button from "../UI/Button/Button";
 
 const YourOrder = () => {
 	const { cart } = useSelector(state => state.cart);
-	const handleSubmit = () => {
-
-	};
+	
 
 	return (
 		<div className={style.wrapper}>

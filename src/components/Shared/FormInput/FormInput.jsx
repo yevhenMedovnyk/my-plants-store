@@ -7,6 +7,7 @@ const FormInput = props => {
 	const [IsFocused, setIsFocused] = useState(false);
 	const handleFocused = () => {
 		setIsFocused(true);
+
 	};
 
 	return (

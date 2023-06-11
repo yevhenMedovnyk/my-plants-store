@@ -5,6 +5,19 @@ const initialState = {
 	subTotalSum: 0,
 	totalSum: 0,
 	coupon: "",
+	inputValues: {
+		firstName: "",
+		lastName: "",
+		country: "",
+		city: "",
+		street: "",
+		apartment: "",
+		state: "",
+		zip: "",
+		email: "",
+		phone: "",
+		notes: "",
+	},
 };
 
 const cartSlice = createSlice({
@@ -45,6 +58,10 @@ const cartSlice = createSlice({
 		setCoupon(state, action) {
 			state.coupon = action.payload;
 		},
+		setInputValues(state, action) {
+			const value = action.payload;
+			state.inputValues = { ...state.inputValues, ...value };
+		},
 	},
 });
 
@@ -55,7 +72,8 @@ export const {
 	removeFromCart,
 	setSubTotalSum,
 	setTotalSum,
-	setCoupon
+	setCoupon,
+	setInputValues,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

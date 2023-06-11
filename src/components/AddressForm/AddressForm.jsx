@@ -1,6 +1,7 @@
 import style from "./addressForm.module.scss";
 import FormInput from "../Shared/FormInput/FormInput";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setInputValues } from "../../store/Slices/cartSlice";
 
 const inputs = [
 	{
@@ -8,6 +9,7 @@ const inputs = [
 		name: "firstName",
 		type: "text",
 		errorMessage: "Please enter your first name",
+		pattern: "[a-zA-Z]+",
 		required: true,
 		label: "First Name",
 	},
@@ -16,6 +18,7 @@ const inputs = [
 		name: "lastName",
 		type: "text",
 		errorMessage: "Please enter your last name",
+		pattern: "[a-zA-Z]+",
 		required: true,
 		label: "Last Name",
 	},
@@ -56,7 +59,7 @@ const inputs = [
 		id: 7,
 		name: "state",
 		type: "text",
-		placeholder: "Select a state",
+		placeholder: "Enter a state",
 		errorMessage: "This field is required",
 		required: true,
 		label: "State",
@@ -65,10 +68,10 @@ const inputs = [
 	{
 		id: 8,
 		name: "zip",
-		type: "number",
+		type: "text",
 		placeholder: null,
-		errorMessage: "Only numbers...",
-		pattern: "[0-9]{10}",
+		errorMessage: "Only numbers",
+		pattern: "[0-9]",
 		required: true,
 		label: "ZIP",
 	},
@@ -87,47 +90,43 @@ const inputs = [
 		type: "tel",
 		placeholder: null,
 		errorMessage: "This field is required",
-		pattern: "^[0-9-+]{9,15}$",
+		pattern: "^[0-9,-,+]{9,15}$",
 		required: true,
 		label: "Phone Number",
 	},
 ];
 
 const AddressForm = () => {
-	const [inputValues, setInputValues] = useState({
-		firstName: "",
-		lastName: "",
-		country: "",
-		city: "",
-		street: "",
-		apartment: "",
-		state: "",
-		zip: "",
-		email: "",
-		phone: "",
-	});
+	const dispatch = useDispatch();
+	const { inputValues } = useSelector(state => state.cart);
+
 	const handleInputChange = e => {
-		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+		dispatch(setInputValues({ [e.target.name]: e.target.value }));
 	};
 
 	return (
-			<div className={style.address}>
-				<h2>Billing Address</h2>
-				<div className={style.inputs}>
-					{inputs.map(input => (
-						<FormInput
-							key={input.id}
-							{...input}
-							value={inputValues[input.name]}
-							onChange={handleInputChange}
-						/>
-					))}
-					<div className={style.textarea}>
-						<label htmlFor='textarea'>Order notes (optional)</label>
-						<textarea id='textarea'></textarea>
-					</div>
+		<div className={style.address}>
+			<h2>Billing Address</h2>
+			<div className={style.inputs}>
+				{inputs.map(input => (
+					<FormInput
+						key={input.id}
+						{...input}
+						value={inputValues[input.name]}
+						onChange={handleInputChange}
+					/>
+				))}
+				<div className={style.textarea}>
+					<label htmlFor='textarea'>Order notes (optional)</label>
+					<textarea
+						id='textarea'
+						name='notes'
+						value={inputValues.notes}
+						onChange={handleInputChange}
+					></textarea>
 				</div>
 			</div>
+		</div>
 	);
 };
 
