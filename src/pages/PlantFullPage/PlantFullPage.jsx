@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../store/Slices/cartSlice";
 
@@ -57,7 +57,9 @@ const ShopItemPage = () => {
 						<span>{count}</span>
 						<Button text='+' classes='plusMinus' onClick={handlePlusClick} />
 					</div>
-					<Button text='Buy NOW' classes='plantItem' />
+					<Link to='/cart/checkout'>
+						<Button text='Buy NOW' classes='plantItem' onClick={onClickAddToCart} />
+					</Link>
 					<Button text='Add to cart' classes='transparent' onClick={onClickAddToCart} />
 					<Button img={heartGreen} classes='transparent' />
 				</div>

@@ -18,6 +18,7 @@ const initialState = {
 		phone: "",
 		notes: "",
 	},
+	paymentMethod: "cash",
 };
 
 const cartSlice = createSlice({
@@ -62,6 +63,9 @@ const cartSlice = createSlice({
 			const value = action.payload;
 			state.inputValues = { ...state.inputValues, ...value };
 		},
+		setPaymentMethod(state, action) {
+			state.paymentMethod = action.payload;
+		},
 	},
 });
 
@@ -74,6 +78,7 @@ export const {
 	setTotalSum,
 	setCoupon,
 	setInputValues,
+	setPaymentMethod,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

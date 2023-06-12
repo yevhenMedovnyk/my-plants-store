@@ -24,6 +24,7 @@
 	flex: 1;
 }
 .title {
+	font-size: 1.8rem;
 	font-weight: 500;
 	color: $primary-font-color;
 }
@@ -77,6 +78,7 @@
 		display: block;
 		margin-right: 3.7rem;
 		font-size: 1.4rem;
+		min-width: 4rem;
 	}
 	.title{
 		font-size: 1.6rem;

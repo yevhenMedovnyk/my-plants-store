@@ -3,10 +3,10 @@ import CartItem from "../CartItem/CartItem";
 import style from "./yourOrder.module.scss";
 import CartTotals from "../CartTotals/CartTotals";
 import Button from "../UI/Button/Button";
+import PaymentMethod from "../PaymentMethod/PaymentMethod";
 
 const YourOrder = () => {
 	const { cart } = useSelector(state => state.cart);
-	
 
 	return (
 		<div className={style.wrapper}>
@@ -23,8 +23,11 @@ const YourOrder = () => {
 						))}
 					</div>
 				</div>
-				<CartTotals />
-				<Button text='Place Order' classes='cartTotal' />
+				<div className={style.containerBottom}>
+					<CartTotals />
+					<PaymentMethod />
+					<Button text='Place Order' classes='cartTotal' />
+				</div>
 			</div>
 		</div>
 	);
