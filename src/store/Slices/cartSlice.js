@@ -66,6 +66,24 @@ const cartSlice = createSlice({
 		setPaymentMethod(state, action) {
 			state.paymentMethod = action.payload;
 		},
+		clearCart(state) {
+			state.cart = [];
+		},
+		clearInputValues(state) {
+			state.inputValues = {
+				firstName: "",
+				lastName: "",
+				country: "",
+				city: "",
+				street: "",
+				apartment: "",
+				state: "",
+				zip: "",
+				email: "",
+				phone: "",
+				notes: "",
+			};
+		},
 	},
 });
 
@@ -79,6 +97,8 @@ export const {
 	setCoupon,
 	setInputValues,
 	setPaymentMethod,
+	clearCart,
+	clearInputValues
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

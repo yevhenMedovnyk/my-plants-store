@@ -3,6 +3,7 @@
 .btn-wrapper {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 4px;
 	background-color: $accent-color;
 	border-radius: 6px;
@@ -71,4 +72,19 @@
 	width: 2.1rem;
 	border-radius: 3.1rem;
 	padding: 0;
+}
+.btn-wrapper.loginRegister{
+	height: 4.5rem;
+	font-weight: 700;
+	width: 100%;
+}
+.btn-wrapper.loginRegisterBtn{
+	max-width: 30rem;
+	width: 100%;
+	font-size: 1.3rem;
+	color: $secondary-font-color;
+	background-color: transparent;
+	border: 1px solid #eaeaea;
+	margin-bottom: 1.5rem;
+	gap: .9rem;
 }

@@ -1,0 +1,44 @@
+@import "./../../styles/variables";
+.wrapper {
+	z-index: 99;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(229, 229, 229, 0.4);
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 50rem;
+	margin: 10rem auto;
+	padding: 1.3rem 1.3rem 2.5rem;
+	background-color: #fff;
+}
+.close {
+	align-self: end;
+	cursor: pointer;
+	margin-bottom: 2.1rem;
+	img {
+		transition: 0.3s;
+		&:hover {
+			transform: scale(1.3);
+		}
+	}
+}
+.switch {
+	button {
+		background-color: transparent;
+		font-size: 2rem;
+		font-weight: 500;
+		color: $primary-font-color;
+		padding: 0em 0.6em;
+		margin-bottom: 2em;
+	}
+
+	button.active {
+		color: $accent-color;
+	}
+}

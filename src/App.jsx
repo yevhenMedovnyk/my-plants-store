@@ -11,6 +11,7 @@ import CartPage from "./pages/CartPage/CartPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
+
 export const router = createBrowserRouter([
 	{
 		path: "/",

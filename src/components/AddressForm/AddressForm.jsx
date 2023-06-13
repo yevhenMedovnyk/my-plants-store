@@ -71,7 +71,7 @@ const inputs = [
 		type: "text",
 		placeholder: null,
 		errorMessage: "Only numbers",
-		pattern: "[0-9]",
+		pattern: "[0-9]{1,10}",
 		required: true,
 		label: "ZIP",
 	},
