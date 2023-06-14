@@ -35,6 +35,8 @@ html {
 	font-size: 62.5%;
 }
 body {
+	position: relative;
+
 	font-family: "CeraPro", sans-serif;
 	font-size: 1.6rem;
 	color: $secondary-font-color;
@@ -43,6 +45,7 @@ body {
 html,
 body,
 #root {
+
 	min-height: 100%;
 }
 #root {
