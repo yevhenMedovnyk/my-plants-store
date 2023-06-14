@@ -5,21 +5,25 @@ import style from "./header.module.scss";
 import searchIcon from "./../../assets/images/searchIcon.svg";
 import cartIcon from "./../../assets/images/cartIcon.svg";
 import Button from "../UI/Button/Button";
-//import logoutIcon from "./../../assets/images/Logout.svg";
+import logoutIcon from "./../../assets/images/Logout.svg";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LoginAndRegisterPopup from "../LoginAndRegisterPopup/LoginAndRegisterPopup";
-import { useState } from "react";
+import { setIsLoginRegisterOpened } from "../../store/Slices/authSlice";
 
 const Header = () => {
+	const dispatch = useDispatch();
 	const { cart } = useSelector(state => state.cart);
-	const [isLoginRegisterOpened, setIsLoginRegisterOpened] = useState(false);
+	const {
+		isLoginRegisterOpened,
+		user: { uid },
+	} = useSelector(state => state.auth);
 	const handleCloseClick = () => {
-		setIsLoginRegisterOpened(false);
+		dispatch(setIsLoginRegisterOpened(false));
 	};
 	const handleLoginBtnClick = () => {
-		setIsLoginRegisterOpened(true);
+		dispatch(setIsLoginRegisterOpened(true));
 	};
 	const cartItemsCount = cart.length;
 
@@ -34,7 +38,7 @@ const Header = () => {
 						<img src={cartIcon} alt='cart' />
 						{!!cartItemsCount && <span>{cartItemsCount}</span>}
 					</Link>
-					<Button text='Login' onClick={handleLoginBtnClick} />
+					{uid ? <Link className={style.toAccountLink} to="/account">MyAccount</Link> : <Button text='Login' onClick={handleLoginBtnClick} />}
 				</div>
 			</header>
 			{isLoginRegisterOpened && <LoginAndRegisterPopup handleCloseClick={handleCloseClick} />}

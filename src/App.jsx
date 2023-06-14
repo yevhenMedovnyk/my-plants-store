@@ -10,7 +10,8 @@ import ShopItemPage, { fetchData } from "./pages/PlantFullPage/PlantFullPage";
 import CartPage from "./pages/CartPage/CartPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-
+import AccountPage from "./pages/AccountPage/AccountPage";
+import { RequireAuth } from "./helpers/RequireAuth";
 
 export const router = createBrowserRouter([
 	{
@@ -42,6 +43,14 @@ export const router = createBrowserRouter([
 			{
 				path: "/cart/checkout",
 				element: <CheckoutPage />,
+			},
+			{
+				path: "/account",
+				element: (
+					<RequireAuth>
+						<AccountPage />
+					</RequireAuth>
+				),
 			},
 		],
 	},

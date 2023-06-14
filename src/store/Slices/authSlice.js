@@ -11,6 +11,14 @@ const initialState = {
 		password: "",
 		confirmPassword: "",
 	},
+	isLoginRegisterOpened: false,
+	user: {
+		displayName: null,
+		email: null,
+		photoURL: null,
+		uid: null,
+		accessToken: null
+	},
 };
 
 const authSlice = createSlice({
@@ -25,8 +33,19 @@ const authSlice = createSlice({
 			const payloadValue = action.payload;
 			state.registerInputValues = { ...state.registerInputValues, ...payloadValue };
 		},
+		setIsLoginRegisterOpened(state, action) {
+			state.isLoginRegisterOpened = action.payload;
+		},
+		setUserData(state, action) {
+			state.user = action.payload;
+		},
 	},
 });
 
-export const { setLoginInputValues, setRegisterInputValues } = authSlice.actions;
+export const {
+	setLoginInputValues,
+	setRegisterInputValues,
+	setIsLoginRegisterOpened,
+	setUserData,
+} = authSlice.actions;
 export default authSlice.reducer;

@@ -1,8 +1,8 @@
 import "./button.scss";
 
-const Button = ({ text, img, alt, classes, onClick }) => {
+const Button = ({ text, img, alt, classes, onClick, type }) => {
 	return (
-		<button onClick={onClick} className={`btn-wrapper ${classes} `}>
+		<button type={type} onClick={onClick} className={`btn-wrapper ${classes} `}>
 			{img && <img src={img} alt={alt} />}
 			{text}
 		</button>

@@ -42,4 +42,20 @@
 		line-height: calc(13 / 10);
 	}
 }
+.toAccountLink{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	background-color: $accent-color;
+	border-radius: 6px;
+	color: #ffffff;
+	font-size: 1.6rem;
+	font-weight: 500;
+	padding: 0.52em 1.06em;
+	transition: 0.3s;
+	&:hover {
+		opacity: 0.8;
+	}
+}
 
