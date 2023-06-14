@@ -1,17 +1,13 @@
-import { useState } from "react";
 import style from "./registerForm.module.scss";
 import FormInput from "../Shared/FormInput/FormInput";
-import Button from "../UI/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegisterInputValues } from "../../store/Slices/authSlice";
 
 const RegisterForm = () => {
-	const [inputValues, setInputValues] = useState({
-		username: "",
-		password: "",
-		confirmPassword: "",
-	});
-
+	const dispatch = useDispatch();
+	const { registerInputValues } = useSelector(state => state.auth);
 	const handleInputChange = e => {
-		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+		dispatch(setRegisterInputValues({ [e.target.name]: e.target.value }));
 	};
 	const inputs = [
 		{
@@ -45,28 +41,26 @@ const RegisterForm = () => {
 			placeholder: "Confirm Password",
 			type: "password",
 			errorMessage: "Passwords do NOT match",
-			pattern: inputValues.password,
+			pattern: registerInputValues.password,
 			required: true,
 		},
 	];
 
 	return (
 		<>
-			<form className={style.wrapper}>
+			<div className={style.wrapper}>
 				<p className={style.title}>Enter your email and password to register.</p>
 				<div className={style.inputs}>
 					{inputs.map(input => (
 						<FormInput
 							key={input.id}
 							{...input}
-							value={inputValues[input.name]}
+							value={registerInputValues[input.name]}
 							onChange={handleInputChange}
 						/>
 					))}
 				</div>
-				<Button text='Login' classes={"loginRegister"} />
-			</form>
-			<p className={style.orLoginWidth}>Or register with</p>
+			</div>
 		</>
 	);
 };

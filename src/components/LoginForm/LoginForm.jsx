@@ -1,7 +1,7 @@
-import { useState } from "react";
 import style from "./loginForm.module.scss";
 import FormInput from "../Shared/FormInput/FormInput";
-import Button from "../UI/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginInputValues } from "../../store/Slices/authSlice";
 
 const inputs = [
 	{
@@ -24,33 +24,28 @@ const inputs = [
 ];
 
 const LoginForm = () => {
-	const [inputValues, setInputValues] = useState({
-		username: "",
-		password: "",
-	});
+	const dispatch = useDispatch();
+	const { loginInputValues } = useSelector(state => state.auth);
 
 	const handleInputChange = e => {
-		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+		dispatch(setLoginInputValues({ [e.target.name]: e.target.value }));
 	};
-	
 
 	return (
 		<>
-			<form className={style.wrapper}>
+			<div className={style.wrapper}>
 				<p className={style.title}>Enter your email and password to login.</p>
 				<div className={style.inputs}>
 					{inputs.map(input => (
 						<FormInput
 							key={input.id}
 							{...input}
-							value={inputValues[input.name]}
+							value={loginInputValues[input.name]}
 							onChange={handleInputChange}
 						/>
 					))}
 				</div>
-				<Button text='Login' classes={"loginRegister"} />
-			</form>
-			<p className={style.orLoginWidth}>Or login with</p>
+			</div>
 		</>
 	);
 };

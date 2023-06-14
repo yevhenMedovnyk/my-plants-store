@@ -1,7 +1,7 @@
 @import "./../../styles/variables";
 .wrapper {
 	z-index: 99;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -40,5 +40,30 @@
 
 	button.active {
 		color: $accent-color;
+	}
+}
+.orLoginWidth {
+	position: relative;
+	font-size: 1.3rem;
+	color: $primary-font-color;
+	margin: 3.54em 1em 2.2em;
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+
+		top: 50%;
+		transform: translateY(-50%);
+		width: 7.7em;
+		background-color: $primary-font-color;
+		height: 0.03rem;
+	}
+	&::after {
+		right: 100%;
+		margin-right: 1rem;
+	}
+	&::before {
+		left: 100%;
+		margin-left: 1rem;
 	}
 }
