@@ -1,6 +1,6 @@
 ## my-plants-store
 
-The app is still in production, 
+I'm still working on this app, 
 but you can already try it by [following the link](https://my-plants-store.netlify.app/)
 
 ---
