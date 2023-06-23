@@ -6,11 +6,16 @@ import { store } from "./store/store.js";
 import "./assets/fonts/fonts.js";
 import { Provider } from "react-redux";
 import "./firebase";
+import { AuthContextProvider } from "./context/AuthContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<Provider store={store}>
-		<RouterProvider router={router}>
-			<App />
-		</RouterProvider>
+		<AuthContextProvider>
+			<RouterProvider router={router}>
+				<App />
+			</RouterProvider>
+			,
+		</AuthContextProvider>
+		,
 	</Provider>,
 );
