@@ -2,24 +2,48 @@ import { Link } from "react-router-dom";
 import style from "./shopItem.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart } from "../../store/Slices/cartSlice";
+import { addItemToCart, removeFromCart } from "../../store/Slices/cartSlice";
 import { useEffect, useState } from "react";
+import { addItemToWishlist, removeFromWishlist } from "../../store/Slices/wishListSlice";
+import { addToWishlist } from "../../services/addToWishlistFn";
+import { deleteFromWishlist } from "../../services/deleteFromWishlistFn";
 
 const ShopItem = props => {
-	
 	const dispatch = useDispatch();
 	const { cart } = useSelector(state => state.cart);
+	const { wishlist } = useSelector(state => state.wishlist);
 	const { id, plant_name, price, image_link } = props;
 	const [inCart, setInCart] = useState(false);
-	
+	const [inWishlist, setInWishlist] = useState(false);
+
 	useEffect(() => {
 		if (cart.some(item => item.id === id)) {
 			setInCart(true);
+		} else {
+			setInCart(false);
 		}
-	}, [cart]);
+		if (wishlist.some(item => item.id === id)) {
+			setInWishlist(true);
+		} else {
+			setInWishlist(false);
+		}
+	}, [cart, wishlist]);
 
 	const onClickAddToCart = () => {
-		dispatch(addItemToCart({ ...props, count: 1 }));
+		if (inCart) {
+			dispatch(removeFromCart(id));
+		} else {
+			dispatch(addItemToCart({ ...props, count: 1 }));
+		}
+	};
+	const onClickAddToWishlist = () => {
+		if (inWishlist) {
+			dispatch(removeFromWishlist(id));
+			deleteFromWishlist(id);
+		} else {
+			dispatch(addItemToWishlist({ ...props }));
+			addToWishlist(props);
+		}
 	};
 
 	return (
@@ -28,9 +52,9 @@ const ShopItem = props => {
 				<Link to={`/plant/${id}`}>
 					<img className={style.mainImg} src={image_link} alt={plant_name} />
 				</Link>
-				<div className={[style.ctaImg, inCart ? style.inCart : ""].join(" ")}>
+				<div className={[style.ctaImg, inCart || inWishlist ? style.active : ""].join(" ")}>
 					<svg
-						className={style.cartIcon}
+						className={[style.cartIcon, inCart ? style.inCart : ""].join(" ")}
 						onClick={onClickAddToCart}
 						width='25'
 						height='24'
@@ -44,7 +68,8 @@ const ShopItem = props => {
 						/>
 					</svg>
 					<svg
-						className={style.inFavorite}
+						className={[style.inFavorite, inWishlist ? style.inWishlist : ""].join(" ")}
+						onClick={onClickAddToWishlist}
 						width='20'
 						height='20'
 						viewBox='0 0 20 20'

@@ -25,8 +25,8 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 	const loginWidthFacebook = async () => {
+		const provider = new FacebookAuthProvider();
 		try {
-			const provider = new FacebookAuthProvider();
 			const userCredential = await signInWithPopup(auth, provider);
 			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
 			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));

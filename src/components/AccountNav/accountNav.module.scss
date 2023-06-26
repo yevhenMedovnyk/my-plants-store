@@ -1,0 +1,21 @@
+@import "./../../styles/variables";
+
+.nav{
+	width: 25.8%;
+	height: max-content;
+	background-color: $secondary-bg-color;
+	flex-shrink: 0;
+
+}
+.title{
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: $primary-font-color;
+	padding: .8em 2.4rem;
+}
+.list{
+	border-bottom: .3px solid $accent-color;
+}
+.logout{
+	padding: 1.9rem 2.5rem;
+}

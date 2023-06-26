@@ -12,6 +12,8 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import { RequireAuth } from "./helpers/RequireAuth";
+import WishlistPage from "./pages/WishlistPage/WishlistPage";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
 
 export const router = createBrowserRouter([
 	{
@@ -51,6 +53,16 @@ export const router = createBrowserRouter([
 						<AccountPage />
 					</RequireAuth>
 				),
+				children: [
+					{
+						element: <WishlistPage />,
+						index: true,
+					},
+					{
+						path: "my_orders",
+						element: <OrdersPage />,
+					},
+				],
 			},
 		],
 	},
