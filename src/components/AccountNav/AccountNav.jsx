@@ -6,7 +6,7 @@ import style from "./accountNav.module.scss";
 import logoutIcon from "./../../assets/images/Logout.svg";
 import cartIcon from "./../../assets/images/cartIcon.svg";
 import heart from "./../../assets/images/heart.svg";
-import AccountNavListElement from "../AccountNavlistElement/AccountNavlistElement";
+import AccountNavListElement from "../AccountNavListElement/AccountNavListElement";
 import { useSelector } from "react-redux";
 
 const navList = [
