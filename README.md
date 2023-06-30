@@ -1,6 +1,8 @@
 ## my-plants-store
 
-I'm still working on this app, 
+This is a React application where you can buy plants and accessories for them. Implemented the main page, shopping cart with full functionality, authorization and registration using Firebase, and others
+
+I'm still working on this app,
 but you can already try it by [following the link](https://my-plants-store.netlify.app/)
 
 ---

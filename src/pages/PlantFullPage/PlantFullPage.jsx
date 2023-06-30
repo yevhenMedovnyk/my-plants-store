@@ -1,22 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../store/Slices/cartSlice";
 
 import style from "./plantFullPage.module.scss";
 import Button from "../../components/UI/Button/Button";
 import axios from "axios";
 
+import { addItemToWishlist, removeFromWishlist } from "../../store/Slices/wishListSlice";
+import { deleteFromWishlist } from "../../services/deleteFromWishlistFn";
+import { addToWishlist } from "../../services/addToWishlistFn";
+
 import heartGreen from "./../../assets/images/heart-green.svg";
+import heart from "./../../assets/images/heart.svg";
+import { PLANTS_URL } from "../../constants/URLs";
 
 const ShopItemPage = () => {
 	const item = useLoaderData();
+	const { cart } = useSelector(state => state.cart);
+	const { wishlist } = useSelector(state => state.wishlist);
+	const [inCart, setInCart] = useState(false);
+	const [inWishlist, setInWishlist] = useState(false);
 
 	const [count, setCount] = useState(1);
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
 	const { plant_name, image_link, description, care_instructions, categories, size, price } = item;
+
+	useEffect(() => {
+		if (cart.some(item => item.id === id)) {
+			setInCart(true);
+		} else {
+			setInCart(false);
+		}
+		if (wishlist.some(item => item.id === id)) {
+			setInWishlist(true);
+		} else {
+			setInWishlist(false);
+		}
+	}, [cart, wishlist]);
+
+	const onClickAddToWishlist = () => {
+		if (inWishlist) {
+			dispatch(removeFromWishlist(id));
+			deleteFromWishlist(id);
+		} else {
+			dispatch(addItemToWishlist({ ...item }));
+			addToWishlist(item);
+		}
+	};
 
 	const onClickAddToCart = () => {
 		dispatch(addItemToCart({ id, plant_name, price, image_link, count }));
@@ -60,8 +93,17 @@ const ShopItemPage = () => {
 					<Link to='/cart/checkout'>
 						<Button text='Buy NOW' classes='plantItem' onClick={onClickAddToCart} />
 					</Link>
-					<Button text='Add to cart' classes='transparent' onClick={onClickAddToCart} />
-					<Button img={heartGreen} classes='transparent' />
+					<Button
+						disabled={!!inCart}
+						text='Add to cart'
+						classes='transparent'
+						onClick={onClickAddToCart}
+					/>
+					<Button
+						onClick={onClickAddToWishlist}
+						img={inWishlist ? heartGreen : heart}
+						classes='transparent'
+					/>
 				</div>
 			</div>
 		</div>
@@ -69,7 +111,7 @@ const ShopItemPage = () => {
 };
 
 export const fetchData = async ({ params }) => {
-	const res = await axios.get(`https://plants-api-dkpe.onrender.com/plants/${params.id}`);
+	const res = await axios.get(`${PLANTS_URL}/${params.id}`);
 	return res.data;
 };
 

@@ -7,13 +7,15 @@ import Sort from "../../components/Sort/Sort";
 import Pagination from "../../components/Pagination/Pagination";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlants } from "../../store/Slices/mainSlice";
+import { fetchPlants, setCurrentPage } from "../../store/Slices/mainSlice";
+import { PLANTS_URL } from "../../constants/URLs";
 
-export const pageLimit = 16;
+
+const pageLimit = 16
 
 const HomePage = () => {
 	const dispatch = useDispatch();
-	const { shopItems, currentPage, status } = useSelector(state => state.plants);
+	const { shopItems, currentPage, totalCount, status } = useSelector(state => state.plants);
 	const { order, sortby, category } = useSelector(state => state.sort);
 	const filterByCategory = () => {
 		if (category === "All Plants") {
@@ -25,7 +27,7 @@ const HomePage = () => {
 	useEffect(() => {
 		dispatch(
 			fetchPlants(
-				`https://plants-api-dkpe.onrender.com/plants?
+				`${PLANTS_URL}?
 				_page=${
 					currentPage + 1
 				}&_limit=${pageLimit}&_sort=${sortby}&_order=${order}${filterByCategory()}&_start=0&_end=1`,
@@ -40,14 +42,20 @@ const HomePage = () => {
 				<div className={style.mainBlock}>
 					<Sort />
 					<div className={style.storeItems}>
-						{status === "loading" ? (
+						{/*{status === "loading" ? (
 							<p style={{ paddingTop: 20, paddingLeft: 20 }}>Loading...</p>
-						) : null}
+						) : null}*/}
 						{shopItems.map(item => (
 							<ShopItem key={item.id} {...item} />
 						))}
 					</div>
-					<Pagination />
+
+					<Pagination
+						setCurrentPage={setCurrentPage}
+						currentPage={currentPage}
+						totalCount={totalCount}
+						pageLimit = {pageLimit}
+					/>
 				</div>
 			</div>
 		</div>

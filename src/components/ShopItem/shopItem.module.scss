@@ -52,14 +52,22 @@
 		}
 	}
 }
-.ctaImg.inCart {
+.ctaImg.active {
 	display: flex;
-	.cartIcon {
-		path {
-			fill: green;
-		}
+}
+
+.cartIcon.inCart {
+	path {
+		fill: green;
 	}
 }
+
+.inFavorite.inWishlist {
+	path {
+		fill: green;
+	}
+}
+
 .title {
 	margin-bottom: 0.6rem;
 	cursor: pointer;

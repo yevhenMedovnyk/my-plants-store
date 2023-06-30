@@ -1,0 +1,10 @@
+.wrapper {
+	flex: 1;
+}
+.items {
+	min-width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 23rem));
+	gap: 7rem 3.3rem;
+	place-content: center;
+}

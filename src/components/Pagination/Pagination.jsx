@@ -1,13 +1,11 @@
 import ReactPaginate from "react-paginate";
-import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage } from "../../store/Slices/mainSlice";
+import { useDispatch } from "react-redux";
 
 import "./pagination.scss";
-import { pageLimit } from "../../pages/HomePage/HomePage";
 
-function Pagination() {
+function Pagination({ setCurrentPage, totalCount, currentPage, pageLimit }) {
 	const dispatch = useDispatch();
-	const { currentPage, totalCount } = useSelector(state => state.plants);
+	//const { currentPage, totalCount } = useSelector(state => state.plants);
 
 	const pageCount = Math.ceil(totalCount / pageLimit);
 
