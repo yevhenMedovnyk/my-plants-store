@@ -1,21 +1,23 @@
 @import "./../../styles/variables";
 
-.nav{
+.nav {
 	width: 25.8%;
 	height: max-content;
 	background-color: $secondary-bg-color;
 	flex-shrink: 0;
-
 }
-.title{
+.title {
 	font-size: 1.8rem;
 	font-weight: 700;
 	color: $primary-font-color;
-	padding: .8em 2.4rem;
+	padding: 0.8em 2.4rem;
+	span {
+		color: $accent-color;
+	}
 }
-.list{
-	border-bottom: .3px solid $accent-color;
+.list {
+	border-bottom: 0.3px solid $accent-color;
 }
-.logout{
+.logout {
 	padding: 1.9rem 2.5rem;
 }

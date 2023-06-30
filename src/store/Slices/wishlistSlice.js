@@ -7,7 +7,6 @@ export const fetchWishlist = createAsyncThunk(
 		try {
 			const res = await axios.get(url);
 			dispatch(setTotalCount(res.headers.get("X-Total-Count")));
-			console.log(res.headers.get("X-Total-Count"));
 			return res.data;
 		} catch (error) {
 			console.log(error.message);

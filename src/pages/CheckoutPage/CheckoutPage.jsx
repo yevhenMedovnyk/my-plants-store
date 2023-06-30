@@ -5,20 +5,24 @@ import style from "./checkoutPage.module.scss";
 import { useSelector } from "react-redux";
 import OrderCompletedPopup from "../../components/OrderCompletedPopup/OrderCompletedPopup";
 import { useState } from "react";
+import { ORDERS_URL } from "../../constants/URLs";
 
 const CheckoutPage = () => {
 	const { cart, inputValues, totalSum } = useSelector(state => state.cart);
+	const { user } = useSelector(state => state.auth);
 	const [isOrderCompleted, setIsOrderCompleted] = useState(false);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
 		//	console.log(e.target.validity.patternMismatch);
 		await axios
-			.post("https://plants-api-dkpe.onrender.com/orders", {
-				id: Math.floor(Math.random()) * 10,
-				cart,
-				inputValues,
-				totalSum,
+			.post(ORDERS_URL, {
+				//id: Math.floor(Math.random()) * 10,
+				plants: cart,
+				address: inputValues,
+				sum: totalSum.toFixed(2),
+				user: user,
+				time: new Date()
 			})
 			.catch(error => console.log(error));
 		setIsOrderCompleted(true);

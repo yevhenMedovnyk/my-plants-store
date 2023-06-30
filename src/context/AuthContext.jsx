@@ -1,10 +1,12 @@
-import { useContext, createContext } from "react";
+import { useContext, createContext, useEffect } from "react";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	GoogleAuthProvider,
 	FacebookAuthProvider,
+	signOut,
+	onAuthStateChanged,
 } from "firebase/auth";
 import { setUserData } from "../store/Slices/authSlice";
 import { useDispatch } from "react-redux";
@@ -54,10 +56,29 @@ export const AuthContextProvider = ({ children }) => {
 			console.log(error);
 		}
 	};
+	const logout = async () => {
+		try {
+			await signOut(auth);
+			dispatch(setUserData({ accessToken: "" }));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, currentUser => {
+			const displayName = currentUser?.displayName;
+			const email = currentUser?.email;
+			const photoURL = currentUser?.photoURL;
+			const accessToken = currentUser?.accessToken;
+			const uid = currentUser?.uid;
+			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));
+		});
+		return () => unsubscribe();
+	}, []);
 
 	return (
 		<AuthContext.Provider
-			value={{ loginWidthGoogle, loginWithEmail, registerWithEmail, loginWidthFacebook }}
+			value={{ loginWidthGoogle, loginWithEmail, registerWithEmail, loginWidthFacebook, logout }}
 		>
 			{children}
 		</AuthContext.Provider>
