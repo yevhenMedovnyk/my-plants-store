@@ -4,7 +4,7 @@ import style from "./shopItem.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeFromCart } from "../../store/Slices/cartSlice";
 import { useEffect, useState } from "react";
-import { addItemToWishlist, removeFromWishlist } from "../../store/Slices/wishListSlice";
+import { addItemToWishlist, removeFromWishlist } from "../../store/Slices/wishlistSlice";
 import { addToWishlist } from "../../services/addToWishlistFn";
 import { deleteFromWishlist } from "../../services/deleteFromWishlistFn";
 
