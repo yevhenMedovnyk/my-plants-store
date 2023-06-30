@@ -7,7 +7,7 @@ import style from "./plantFullPage.module.scss";
 import Button from "../../components/UI/Button/Button";
 import axios from "axios";
 
-import { addItemToWishlist, removeFromWishlist } from "../../store/Slices/wishListSlice";
+import { addItemToWishlist, removeFromWishlist } from "../../store/Slices/wishlistSlice";
 import { deleteFromWishlist } from "../../services/deleteFromWishlistFn";
 import { addToWishlist } from "../../services/addToWishlistFn";
 
