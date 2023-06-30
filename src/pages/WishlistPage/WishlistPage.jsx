@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../components/Pagination/Pagination";
 import ShopItem from "../../components/ShopItem/ShopItem";
 import style from "./wishlistPage.module.scss";
-import { fetchWishlist, setCurrentPage } from "../../store/Slices/wishListSlice";
+import { fetchWishlist, setCurrentPage } from "../../store/Slices/wishlistSlice";
 import { useEffect } from "react";
 import { WISHLIST_URL } from "../../constants/URLs";
 
