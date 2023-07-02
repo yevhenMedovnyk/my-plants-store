@@ -19,6 +19,7 @@ const initialState = {
 	wishlist: [],
 	currentPage: 0,
 	totalCount: 0,
+	pageLimit: 6,
 	status: null,
 	error: null,
 };

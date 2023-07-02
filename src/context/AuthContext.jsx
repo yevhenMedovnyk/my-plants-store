@@ -4,7 +4,6 @@ import {
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	GoogleAuthProvider,
-	FacebookAuthProvider,
 	signOut,
 	onAuthStateChanged,
 } from "firebase/auth";
@@ -19,16 +18,6 @@ export const AuthContextProvider = ({ children }) => {
 	const loginWidthGoogle = async () => {
 		try {
 			const provider = new GoogleAuthProvider();
-			const userCredential = await signInWithPopup(auth, provider);
-			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
-			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	const loginWidthFacebook = async () => {
-		const provider = new FacebookAuthProvider();
-		try {
 			const userCredential = await signInWithPopup(auth, provider);
 			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
 			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));
@@ -77,9 +66,7 @@ export const AuthContextProvider = ({ children }) => {
 	}, []);
 
 	return (
-		<AuthContext.Provider
-			value={{ loginWidthGoogle, loginWithEmail, registerWithEmail, loginWidthFacebook, logout }}
-		>
+		<AuthContext.Provider value={{ loginWidthGoogle, loginWithEmail, registerWithEmail, logout }}>
 			{children}
 		</AuthContext.Provider>
 	);

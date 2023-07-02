@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	order: "asc",
+	order: "desc",
 	sortby: "price",
 	category: "All Plants",
 };

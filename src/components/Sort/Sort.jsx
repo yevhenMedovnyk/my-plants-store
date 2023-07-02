@@ -21,7 +21,7 @@ const categories = [
 const Sort = () => {
 	const { category } = useSelector(state => state.sort);
 	const dispatch = useDispatch();
-	const [sortValue, setSortValue] = useState(sortValueArr[0].name);
+	const [sortValue, setSortValue] = useState(sortValueArr[1].name);
 	const [sortOpened, setSortOpened] = useState(false);
 
 	const handleClick = el => {

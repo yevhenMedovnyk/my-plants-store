@@ -7,7 +7,6 @@ import Button from "../UI/Button/Button";
 
 import close from "./../../assets/images/close.png";
 import google from "./../../assets/images/google_icon.svg";
-import fb from "./../../assets/images/facebook_icon.svg";
 
 import { setIsLoginRegisterOpened } from "../../store/Slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +16,7 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 	const { registerInputValues, loginInputValues } = useSelector(state => state.auth);
 	const { accessToken } = useSelector(state => state.auth.user);
 
-	const { loginWidthGoogle, loginWithEmail, registerWithEmail, loginWidthFacebook } = UserAuth();
+	const { loginWidthGoogle, loginWithEmail, registerWithEmail } = UserAuth();
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -31,17 +30,12 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 		e.preventDefault();
 		registerWithEmail(registerInputValues.email, registerInputValues.password);
 	};
-
 	const handleEmailLogin = e => {
 		e.preventDefault();
 		loginWithEmail(loginInputValues.email, loginInputValues.password);
 	};
-
 	const handleGoogleLogin = () => {
 		loginWidthGoogle();
-	};
-	const handleFacebookLogin = () => {
-		loginWidthFacebook();
 	};
 
 	useEffect(() => {
@@ -91,13 +85,6 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 					onClick={handleGoogleLogin}
 					img={google}
 					text='Continue with Google'
-					classes={"loginRegisterBtn"}
-				/>
-				<Button
-					onClick={handleFacebookLogin}
-					type='button'
-					img={fb}
-					text='Continue with Facebook'
 					classes={"loginRegisterBtn"}
 				/>
 			</form>
