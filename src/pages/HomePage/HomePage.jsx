@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import style from "./homePage.module.scss";
 
 import MainSlider from "../../components/MainSlider/MainSlider";
@@ -15,7 +15,6 @@ const HomePage = () => {
 	const { shopItems, currentPage, totalCount, status, pageLimit } = useSelector(
 		state => state.plants,
 	);
-	//const [loading, setLoading] = useState(true);
 	const { order, sortby, category } = useSelector(state => state.sort);
 	const filterByCategory = () => {
 		if (category === "All Plants") {
@@ -33,7 +32,6 @@ const HomePage = () => {
 				}&_limit=${pageLimit}&_sort=${sortby}&_order=${order}${filterByCategory()}&_start=0&_end=1`,
 			),
 		);
-		//setLoading(false)
 	}, [currentPage, order, sortby, category]);
 
 	return (
@@ -48,7 +46,7 @@ const HomePage = () => {
 						) : null}
 						{status === "resolved" && shopItems.map(item => <ShopItem key={item.id} {...item} />)}
 					</div>
-					{totalCount > pageLimit && (
+					{totalCount > pageLimit && status === "resolved" && (
 						<Pagination
 							setCurrentPage={setCurrentPage}
 							currentPage={currentPage}

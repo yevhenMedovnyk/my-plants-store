@@ -6,11 +6,11 @@ import { fetchWishlist, setCurrentPage } from "../../store/Slices/wishlistSlice"
 import { useEffect } from "react";
 import { WISHLIST_URL } from "../../constants/URLs";
 
-
-
 const WishlistPage = () => {
 	const dispatch = useDispatch();
-	const { wishlist, status, currentPage, totalCount, pageLimit } = useSelector(state => state.wishlist);
+	const { wishlist, status, currentPage, totalCount, pageLimit } = useSelector(
+		state => state.wishlist,
+	);
 
 	useEffect(() => {
 		dispatch(
@@ -18,19 +18,16 @@ const WishlistPage = () => {
 			_page=${currentPage + 1}&_limit=${pageLimit}`),
 		);
 	}, [currentPage]);
-	
 
 	return (
 		<div className={style.wrapper}>
 			<div className={style.items}>
-				{/*{status === "loading" ? (
+				{status === "loading" ? (
 					<p style={{ paddingTop: 20, paddingLeft: 20 }}>Loading...</p>
-				) : null}*/}
-				{wishlist.map(item => (
-					<ShopItem key={item.id} {...item} />
-				))}
+				) : null}
+				{status === "resolved" && wishlist.map(item => <ShopItem key={item.id} {...item} />)}
 			</div>
-			{totalCount > pageLimit && (
+			{totalCount > pageLimit && status === "resolved" && (
 				<Pagination
 					setCurrentPage={setCurrentPage}
 					currentPage={currentPage}
