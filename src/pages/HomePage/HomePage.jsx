@@ -46,17 +46,16 @@ const HomePage = () => {
 						{status === "loading" ? (
 							<p style={{ paddingTop: 20, paddingLeft: 20 }}>Loading...</p>
 						) : null}
-						{shopItems.map(item => (
-							<ShopItem key={item.id} {...item} />
-						))}
+						{status === "resolved" && shopItems.map(item => <ShopItem key={item.id} {...item} />)}
 					</div>
-
-					<Pagination
-						setCurrentPage={setCurrentPage}
-						currentPage={currentPage}
-						totalCount={totalCount}
-						pageLimit={pageLimit}
-					/>
+					{totalCount > pageLimit && (
+						<Pagination
+							setCurrentPage={setCurrentPage}
+							currentPage={currentPage}
+							totalCount={totalCount}
+							pageLimit={pageLimit}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
