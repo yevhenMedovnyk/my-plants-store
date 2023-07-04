@@ -19,6 +19,7 @@ const initialState = {
 	shopItems: [],
 	currentPage: 0,
 	totalCount: 0,
+	pageLimit: 16,
 	status: null,
 	error: null,
 };

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import style from "./homePage.module.scss";
 
 import MainSlider from "../../components/MainSlider/MainSlider";
@@ -10,12 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPlants, setCurrentPage } from "../../store/Slices/mainSlice";
 import { PLANTS_URL } from "../../constants/URLs";
 
-
-const pageLimit = 16
-
 const HomePage = () => {
 	const dispatch = useDispatch();
-	const { shopItems, currentPage, totalCount, status } = useSelector(state => state.plants);
+	const { shopItems, currentPage, totalCount, status, pageLimit } = useSelector(
+		state => state.plants,
+	);
+	//const [loading, setLoading] = useState(true);
 	const { order, sortby, category } = useSelector(state => state.sort);
 	const filterByCategory = () => {
 		if (category === "All Plants") {
@@ -33,6 +33,7 @@ const HomePage = () => {
 				}&_limit=${pageLimit}&_sort=${sortby}&_order=${order}${filterByCategory()}&_start=0&_end=1`,
 			),
 		);
+		//setLoading(false)
 	}, [currentPage, order, sortby, category]);
 
 	return (
@@ -42,9 +43,9 @@ const HomePage = () => {
 				<div className={style.mainBlock}>
 					<Sort />
 					<div className={style.storeItems}>
-						{/*{status === "loading" ? (
+						{status === "loading" ? (
 							<p style={{ paddingTop: 20, paddingLeft: 20 }}>Loading...</p>
-						) : null}*/}
+						) : null}
 						{shopItems.map(item => (
 							<ShopItem key={item.id} {...item} />
 						))}
@@ -54,7 +55,7 @@ const HomePage = () => {
 						setCurrentPage={setCurrentPage}
 						currentPage={currentPage}
 						totalCount={totalCount}
-						pageLimit = {pageLimit}
+						pageLimit={pageLimit}
 					/>
 				</div>
 			</div>
