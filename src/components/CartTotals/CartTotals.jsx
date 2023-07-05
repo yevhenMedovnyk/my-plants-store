@@ -3,19 +3,32 @@ import style from "./cartTotals.module.scss";
 
 import Input from "../Shared/Input/Input";
 import { useDispatch, useSelector } from "react-redux";
-import { setCoupon, setSubTotalSum, setTotalSum } from "../../store/Slices/cartSlice";
+import {
+	setInputCoupon,
+	setCouponData,
+	setSubTotalSum,
+	setTotalSum,
+} from "../../store/Slices/cartSlice";
+import axios from "axios";
+import { COUPONS_URL } from "../../constants/URLs";
+import { useDebounce } from "../../helpers/useDebounce";
 
 const CartTotals = () => {
 	const dispatch = useDispatch();
+	const { cart, subTotalSum, totalSum, inputCoupon, couponData } = useSelector(state => state.cart);
 	const [discount, setDiscount] = useState(0);
-	const { cart, subTotalSum, totalSum, coupon } = useSelector(state => state.cart);
-
 	const onInputChange = e => {
-		dispatch(setCoupon(e.target.value));
+		dispatch(setInputCoupon(e.target.value));
+	};
+
+	const debouncedValue = useDebounce(inputCoupon, 900);
+	const fetchCouponData = async () => {
+		const res = await axios.get(`${COUPONS_URL}?name=${debouncedValue}`);
+		dispatch(setCouponData(res.data));
 	};
 	const calculateTotalSum = () => {
-		if (coupon === "Yevhen") {
-			setDiscount((subTotalSum / 100) * 20);
+		if (couponData[0]?.name === debouncedValue && couponData[0].count > 0) {
+			setDiscount((subTotalSum / 100) * couponData[0]?.discount);
 			dispatch(setTotalSum(subTotalSum - discount));
 		} else {
 			dispatch(setTotalSum(subTotalSum));
@@ -24,9 +37,10 @@ const CartTotals = () => {
 	};
 
 	useEffect(() => {
+		fetchCouponData();
 		dispatch(setSubTotalSum());
 		calculateTotalSum();
-	}, [coupon, cart, discount, subTotalSum]);
+	}, [debouncedValue, cart, discount, subTotalSum, dispatch, couponData[0]?.name]);
 	return (
 		<div className={style.wrapper}>
 			<div className={style.totalsTitleContainer}>
@@ -40,7 +54,7 @@ const CartTotals = () => {
 					type='text'
 					classes='cartInput'
 					onChange={onInputChange}
-					value={coupon}
+					value={inputCoupon}
 				/>
 			</div>
 			<div className={style.subTotal}>

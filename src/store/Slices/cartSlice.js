@@ -4,7 +4,8 @@ const initialState = {
 	cart: [],
 	subTotalSum: 0,
 	totalSum: 0,
-	coupon: "",
+	inputCoupon: "",
+	couponData: [],
 	inputValues: {
 		firstName: "",
 		lastName: "",
@@ -56,8 +57,11 @@ const cartSlice = createSlice({
 		setTotalSum(state, action) {
 			state.totalSum = action.payload;
 		},
-		setCoupon(state, action) {
-			state.coupon = action.payload;
+		setInputCoupon(state, action) {
+			state.inputCoupon = action.payload;
+		},
+		setCouponData(state, action) {
+			state.couponData = action.payload;
 		},
 		setInputValues(state, action) {
 			const value = action.payload;
@@ -94,7 +98,8 @@ export const {
 	removeFromCart,
 	setSubTotalSum,
 	setTotalSum,
-	setCoupon,
+	setInputCoupon,
+	setCouponData,
 	setInputValues,
 	setPaymentMethod,
 	clearCart,

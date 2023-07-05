@@ -5,7 +5,6 @@ import style from "./header.module.scss";
 import searchIcon from "./../../assets/images/searchIcon.svg";
 import cartIcon from "./../../assets/images/cartIcon.svg";
 import Button from "../UI/Button/Button";
-import logoutIcon from "./../../assets/images/Logout.svg";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -30,7 +29,9 @@ const Header = () => {
 	return (
 		<>
 			<header className={style.header}>
-				<Logo />
+				<Link to='/'>
+					<Logo />
+				</Link>
 				<Menu />
 				<div className={style.rightBlock}>
 					<img className={style.searchIcon} src={searchIcon} alt='search' />
@@ -38,7 +39,13 @@ const Header = () => {
 						<img src={cartIcon} alt='cart' />
 						{!!cartItemsCount && <span>{cartItemsCount}</span>}
 					</Link>
-					{uid ? <Link className={style.toAccountLink} to="/account">My Account</Link> : <Button text='Login' onClick={handleLoginBtnClick} />}
+					{uid ? (
+						<Link className={style.toAccountLink} to='/account'>
+							My Account
+						</Link>
+					) : (
+						<Button text='Login' onClick={handleLoginBtnClick} />
+					)}
 				</div>
 			</header>
 			{isLoginRegisterOpened && <LoginAndRegisterPopup handleCloseClick={handleCloseClick} />}
