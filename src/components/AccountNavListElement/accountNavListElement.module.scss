@@ -5,11 +5,15 @@
 	gap: 1rem;
 	align-items: center;
 	font-size: 1.5rem;
-	padding: 0.8rem 2.4rem;
-	margin-bottom: 1.3rem;
+	padding: 0 2.4rem 1.9rem;
 	cursor: pointer;
-	img{
+	img {
 		width: 2rem;
 		height: 2rem;
 	}
+
+}
+
+.listItem.active {
+	color: $accent-color;
 }

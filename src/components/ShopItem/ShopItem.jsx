@@ -11,6 +11,7 @@ import { deleteFromWishlist } from "../../services/deleteFromWishlistFn";
 const ShopItem = props => {
 	const dispatch = useDispatch();
 	const { cart } = useSelector(state => state.cart);
+	const { user } = useSelector(state => state.auth);
 	const { wishlist } = useSelector(state => state.wishlist);
 	const { id, plant_name, price, image_link } = props;
 	const [inCart, setInCart] = useState(false);
@@ -42,7 +43,7 @@ const ShopItem = props => {
 			deleteFromWishlist(id);
 		} else {
 			dispatch(addItemToWishlist({ ...props }));
-			addToWishlist(props);
+			addToWishlist({ ...props, user: user });
 		}
 	};
 

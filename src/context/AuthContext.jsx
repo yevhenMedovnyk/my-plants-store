@@ -29,6 +29,7 @@ export const AuthContextProvider = ({ children }) => {
 	const loginWithEmail = async (inputEmail, password) => {
 		try {
 			const userCredential = await signInWithEmailAndPassword(auth, inputEmail, password);
+			console.log(userCredential.user);
 			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
 			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));
 		} catch (error) {
@@ -39,6 +40,8 @@ export const AuthContextProvider = ({ children }) => {
 	const registerWithEmail = async (inputEmail, password) => {
 		try {
 			const userCredential = await createUserWithEmailAndPassword(auth, inputEmail, password);
+			console.log(userCredential.user);
+
 			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
 			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));
 		} catch (error) {

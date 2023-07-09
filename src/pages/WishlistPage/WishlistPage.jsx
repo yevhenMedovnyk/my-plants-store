@@ -11,11 +11,12 @@ const WishlistPage = () => {
 	const { wishlist, status, currentPage, totalCount, pageLimit } = useSelector(
 		state => state.wishlist,
 	);
+	const { email } = useSelector(state => state.auth.user);
 
 	useEffect(() => {
 		dispatch(
-			fetchWishlist(`${WISHLIST_URL}?
-			_page=${currentPage + 1}&_limit=${pageLimit}`),
+			fetchWishlist(`${WISHLIST_URL}?user.email=${email}
+			&_page=${currentPage + 1}&_limit=${pageLimit}`),
 		);
 	}, [currentPage]);
 
