@@ -4,7 +4,7 @@ import style from "./orderCompletedPopup.module.scss";
 import Button from "../UI/Button/Button";
 
 import thankImg from "./../../assets/images/thank_you.png";
-import { clearCart, clearInputValues } from "../../store/Slices/cartSlice";
+import { clearCart, clearInputValues, setInputCoupon } from "../../store/Slices/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const OrderCompletedPopup = () => {
@@ -15,6 +15,7 @@ const OrderCompletedPopup = () => {
 		dispatch(clearCart());
 		navigate("/");
 		dispatch(clearInputValues());
+		dispatch(setInputCoupon(""));
 	};
 
 	return (
