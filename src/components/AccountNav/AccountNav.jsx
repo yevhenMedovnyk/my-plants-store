@@ -5,15 +5,17 @@ import style from "./accountNav.module.scss";
 
 import logoutIcon from "./../../assets/images/Logout.svg";
 import cartIcon from "./../../assets/images/cartIcon.svg";
+import cartIcon_green from "./../../assets/images/cartIcon_green.svg";
 import heart from "./../../assets/images/heart.svg";
+import heartGreen from "./../../assets/images/heart-green.svg";
 import AccountNavListElement from "../AccountNavListElement/AccountNavListElement";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const navList = [
-	{ img: heart, text: "Wishlist", link: "/account" },
-	{ img: cartIcon, text: "Orders", link: "my_orders" },
+	{ img: heart, img_active: heartGreen, text: "Wishlist", link: "/account" },
+	{ img: cartIcon, img_active: cartIcon_green, text: "Orders", link: "my_orders" },
 ];
 
 const AccountNav = () => {
