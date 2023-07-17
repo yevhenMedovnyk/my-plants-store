@@ -18,7 +18,6 @@ const MainSlider = () => {
 			className={style.wrapper}
 			showThumbs={false}
 			infiniteLoop={true}
-			verticalSwipe={"natural"}
 		>
 			<SliderItem img={mainImg} />
 			<SliderItem img={superSale} />
