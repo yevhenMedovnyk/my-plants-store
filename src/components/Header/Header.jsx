@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import LoginAndRegisterPopup from "../LoginAndRegisterPopup/LoginAndRegisterPopup";
 import { setIsLoginRegisterOpened } from "../../store/Slices/authSlice";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "../Shared/Input/Input";
 
 import burger from "./../../assets/images/burger_menu.svg";
@@ -44,6 +44,21 @@ const Header = () => {
 		ref.current.focus();
 	};
 
+	const searchInputRef = useRef(null);
+	const searchIconRef = useRef(null);
+
+	useEffect(() => {
+		const handleClickOutside = e => {
+			let path = e.composedPath().includes(searchInputRef.current);
+			let searchIconPath = e.composedPath().includes(searchIconRef.current);
+			if (!path && !searchIconPath) {
+				setIsSearchActive(false);
+			}
+		};
+		document.body.addEventListener("click", handleClickOutside);
+		return () => document.body.removeEventListener("click", handleClickOutside);
+	}, []);
+
 	const handleCloseClick = () => {
 		dispatch(setIsLoginRegisterOpened(false));
 	};
@@ -70,6 +85,7 @@ const Header = () => {
 				<Menu onClickSearchIcon={handleSearchIconClick} isBurgerOpened={isBurgerOpened} />
 				<form
 					onSubmit={handleSearchBtnClick}
+					ref={searchInputRef}
 					className={[style.search, isSearchActive ? style.open : null].join(" ")}
 				>
 					<Input
@@ -86,6 +102,7 @@ const Header = () => {
 
 				<div className={style.rightBlock}>
 					<img
+						ref={searchIconRef}
 						onClick={handleSearchIconClick}
 						className={style.searchIcon}
 						src={searchIcon}

@@ -18,7 +18,7 @@ const Input = ({
 	const inputRef = useRef(null);
 
 	return (
-		<div className={[style.input, style[`${classes}`]].join(" ")}>
+		<div  className={[style.input, style[`${classes}`]].join(" ")}>
 			<input
 				value={value}
 				type={type}
