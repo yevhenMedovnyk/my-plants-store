@@ -14,6 +14,7 @@ import AccountPage from "./pages/AccountPage/AccountPage";
 import { RequireAuth } from "./helpers/RequireAuth";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 export const router = createBrowserRouter([
 	{
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/plantCare",
 				element: <PlantCarePage />,
+			},
+			{
+				path: "/search",
+				element: <SearchPage />,
 			},
 			{
 				path: "/blogs",

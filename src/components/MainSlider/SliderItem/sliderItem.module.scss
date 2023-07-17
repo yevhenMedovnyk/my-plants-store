@@ -1,19 +1,20 @@
 @import "./../../../styles/variables";
 
-
 .sliderItem {
 	display: flex;
 	align-items: center;
 	background-color: $secondary-bg-color;
-	height: 43.4rem;
-
-
+	//height: 43.4rem;
+	@media (max-width: 550px) {
+		flex-direction: column;
+	}
 }
 .content {
 	flex: 1;
 	text-align: left;
 	padding-left: 3.36%;
-	h2{
+	padding-bottom: 3rem;
+	h2 {
 		font-size: 1.4rem;
 		line-height: calc(16 / 14);
 		font-weight: 500;
@@ -21,28 +22,61 @@
 		margin-bottom: 0.7rem;
 		letter-spacing: 0.1em;
 	}
-	h1{
+	h1 {
 		font-size: 7rem;
 		line-height: calc(70 / 70);
 		font-weight: 900;
 		text-transform: uppercase;
 		color: $primary-font-color;
 		margin-bottom: 0.5rem;
-		span{
+		span {
 			color: $accent-color;
 		}
+		@media (max-width: 1130px) {
+			font-size: 5rem;
+		}
+		@media (max-width: 750px) {
+			font-size: 4rem;
+		}
+		@media (max-width: 630px) {
+			font-size: 3.4rem;
+		}
+		@media (max-width: 550px) {
+			max-width: 12em;
+		}
 	}
-	p{
+	p {
 		font-size: 1.4rem;
 		line-height: calc(24 / 14);
 		margin-bottom: 3.79em;
+		@media (max-width: 1130px) {
+			margin-bottom: 2em;
+			max-width: 30em;
+		}
+		@media (max-width: 750px) {
+			max-width: 26em;
+		}
+	}
+	@media (max-width: 550px) {
+		padding: 5% 3%;
+		align-self: start;
 	}
 }
 .image {
 	flex: 1;
-	img{
-		width: 434px;
-		height: 434px;
+	img {
+		width: 43rem;
+		height: 43rem;
 		object-fit: contain;
+		@media (max-width: 750px) {
+			width: 38rem;
+			height: 38rem;
+		}
+	}
+	@media (max-width: 1130px) {
+		flex: 0.8;
+	}
+	@media (max-width: 550px) {
+		padding-bottom: 4rem;
 	}
 }

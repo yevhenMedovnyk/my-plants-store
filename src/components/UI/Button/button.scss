@@ -73,14 +73,14 @@
 	border-radius: 3.1rem;
 	padding: 0;
 }
-.btn-wrapper.loginRegister{
+.btn-wrapper.loginRegister {
 	height: 4.5rem;
 	font-weight: 700;
 	max-width: 30rem;
 
 	width: 100%;
 }
-.btn-wrapper.loginRegisterBtn{
+.btn-wrapper.loginRegisterBtn {
 	max-width: 30rem;
 	width: 100%;
 	font-size: 1.3rem;
@@ -88,5 +88,15 @@
 	background-color: transparent;
 	border: 1px solid #eaeaea;
 	margin-bottom: 1.5rem;
-	gap: .9rem;
+	gap: 0.9rem;
+}
+.btn-wrapper.sort {
+	display: none;
+	padding: 0.3em 0.7em;
+	img {
+		width: 2rem;
+	}
+	@media (max-width: 860px) {
+		display: flex;
+	}
 }

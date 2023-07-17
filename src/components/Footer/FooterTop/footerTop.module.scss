@@ -7,6 +7,10 @@
 	background-color: $secondary-bg-color;
 	padding: 2.5rem 2.5rem 3rem 2.5rem;
 	gap: 3rem 2.7rem;
+	@media (max-width: 630px){
+		justify-content: center;
+		gap: 1.5rem;
+	}
 }
 .join {
 	margin-left: 2.9%;

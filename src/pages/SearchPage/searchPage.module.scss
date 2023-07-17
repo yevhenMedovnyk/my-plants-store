@@ -1,3 +1,5 @@
+@import "./../../styles/variables";
+
 .wrapper {
 	padding: 3rem 0 8.333% 0;
 }
@@ -7,6 +9,14 @@
 
 .mainBlock {
 	width: 100%;
+}
+.searchParams{
+	font-size: 2.4rem;
+	font-weight: 700;
+	margin-bottom: 2em;
+	span{
+		color: $accent-color;
+	}
 }
 .storeItems {
 	display: grid;

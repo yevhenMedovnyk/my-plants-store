@@ -2,11 +2,13 @@
 
 .contacts {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
+	justify-content: space-around;
+	gap: 2.3rem;
 	background-color: rgba(70, 163, 88, 0.1);
 	padding: 2.7rem 2.3rem;
 	margin-bottom: 2rem;
-	column-gap: 8%;
 	font-size: 1.4rem;
 	border-bottom: 1px solid $accent-color;
 	border-top: 1px solid $accent-color;

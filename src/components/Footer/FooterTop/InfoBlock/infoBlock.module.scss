@@ -9,6 +9,12 @@
 		max-width: 9rem;
 		margin-bottom: 1.5rem;
 	}
+	@media (max-width: 630px){
+		padding: 3%;
+		border: none;
+		text-align: center;
+	}
+
 }
 .title {
 	font-size: 1.7rem;

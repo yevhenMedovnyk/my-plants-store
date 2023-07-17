@@ -1,6 +1,21 @@
+import { useRef } from "react";
 import style from "./input.module.scss";
 
-const Input = ({ placeholder, text, type, classes, onClick, onChange, value }) => {
+import removeIcon from "./../../../assets/images/remove-icon.svg";
+
+const Input = ({
+	placeholder,
+	text,
+	type,
+	btnType,
+	classes,
+	onClick,
+	onClickRemove,
+	onChange,
+	value,
+	img,
+}) => {
+	const inputRef = useRef(null);
 
 	return (
 		<div className={[style.input, style[`${classes}`]].join(" ")}>
@@ -9,8 +24,10 @@ const Input = ({ placeholder, text, type, classes, onClick, onChange, value }) =
 				type={type}
 				placeholder={placeholder}
 				onChange={onChange}
+				ref={inputRef}
 			/>
-			<button onClick={onClick}>{text}</button>
+			{img && <img src={removeIcon} alt='remove' onClick={() => onClickRemove(inputRef)} />}
+			<button type={btnType} onClick={onClick}>{text}</button>
 		</div>
 	);
 };

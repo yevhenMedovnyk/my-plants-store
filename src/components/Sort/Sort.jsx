@@ -4,6 +4,9 @@ import style from "./sort.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCategory, changeSortType } from "../../store/Slices/sortSlice";
 import { setCurrentPage } from "../../store/Slices/mainSlice";
+import Button from "../UI/Button/Button";
+
+import filter from "./../../assets/images/filter.svg";
 
 const sortValueArr = [
 	{ name: "Min price", order: "asc", sortby: "price" },
@@ -23,6 +26,7 @@ const Sort = () => {
 	const dispatch = useDispatch();
 	const [sortValue, setSortValue] = useState(sortValueArr[1].name);
 	const [sortOpened, setSortOpened] = useState(false);
+	const [categoryOpened, setCategoryOpened] = useState(false);
 
 	const handleClick = el => {
 		setSortValue(el.name);
@@ -33,10 +37,15 @@ const Sort = () => {
 		dispatch(changeCategory(category));
 		dispatch(setCurrentPage(0));
 	};
+	const handleFilterBtnClick = () => {
+		setCategoryOpened(!categoryOpened);
+	};
 
 	return (
 		<div className={style.wrapper}>
-			<ul className={style.filter}>
+			{/*<button className={style.filter_btn}>Filter: </button>*/}
+			<Button text='Filter' img={filter} classes='sort' onClick={handleFilterBtnClick} />
+			<ul className={[style.filter, categoryOpened ? style.active : ""].join(" ")}>
 				{categories.map(categoryName => (
 					<li
 						onClick={() => handleCategoryClick(categoryName)}

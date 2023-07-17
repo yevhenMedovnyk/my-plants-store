@@ -13,12 +13,11 @@
 		outline: none;
 		border: none;
 		padding: 0em 0.67em;
-		color: #A5A5A5;
+		color: #a5a5a5;
 		&:placeholder {
 			color: #acacac;
 			font-size: 1.4rem;
 		}
-		
 	}
 	button {
 		font-size: 1.8rem;
@@ -35,8 +34,55 @@
 .input.cartInput {
 	outline: 1px solid $accent-color;
 	min-height: 4rem;
-	
-	button{
+	button {
 		display: none;
+	}
+}
+.input.search {
+	height: 8rem;
+	min-width: 60%;
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+	background-color: #fff;
+	input {
+		flex: 1;
+		border: 1px solid #eaeaea;
+		border-radius: 0.6rem;
+		font-size: 1.8rem;
+		padding: 0.8em;
+		color: $primary-font-color;
+		&::placeholder {
+			color: #a5a5a5;
+		}
+		&:focus {
+			border-color: $accent-color;
+			outline: none;
+		}
+	}
+	button {
+		border-radius: 0.3em;
+		padding: 0.8em 1.39em;
+	}
+	img {
+		width: 2.2rem;
+		cursor: pointer;
+		transform: translateX(-5rem);
+		transition: 0.3s;
+		&:hover {
+			transform: translateX(-5rem) scale(1.1);
+		}
+	}
+}
+.input.footer {
+	input {
+		@media (max-width: 375px) {
+			font-size: 1.2rem;
+		}
+	}
+	button{
+		@media (max-width: 375px) {
+			font-size: 1.4rem;
+		}
 	}
 }

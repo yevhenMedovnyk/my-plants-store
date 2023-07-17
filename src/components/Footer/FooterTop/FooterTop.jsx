@@ -27,7 +27,7 @@ const FooterTop = () => {
 			/>
 			<div className={style.join}>
 				<h5>Would you like to join newsletters?</h5>
-				<Input placeholder='Enter your email address...' text='Join' type='email' />
+				<Input placeholder='Enter your email address...' text='Join' type='email' classes="footer" />
 				<p>
 					We usually post offers and challenges in newsletter. We’re your online houseplant
 					destination. We offer a wide range of houseplants and accessories shipped directly from

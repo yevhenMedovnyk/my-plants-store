@@ -1,14 +1,51 @@
 @import "./../../styles/variables";
 
 .wrapper {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 7rem 0rem 3rem;
+	margin: 7rem 0rem 3rem;
+	@media (max-width: 860px) {
+		padding: 0rem 3rem;
+	}
+	@media (max-width: 860px) {
+		padding: 0rem .4rem;
+	}
 }
-.filter{
+
+.filter {
 	display: flex;
 	gap: 1.4rem;
+	@media (max-width: 860px) {
+		gap: 0;
+		z-index: 9;
+		position: absolute;
+		left: 1rem;
+		top: 5rem;
+		flex-direction: column;
+		transition: 0.3s;
+		transform: translateX(-130%);
+		z-index: 4;
+		border: 0.5px solid $accent-color;
+		border-radius: 0.3rem;
+		background-color: #fff;
+		li {
+			padding: 0.3em 0.6em;
+			cursor: pointer;
+			transition: 0.3s;
+			&:hover {
+				background-color: rgb(200, 237, 200);
+			}
+		}
+		.active {
+			background-color: rgb(200, 237, 200);
+			color: $primary-font-color;
+		}
+	}
+}
+.filter.active {
+	transform: translateX(0);
 }
 .category {
 	position: relative;
@@ -31,11 +68,14 @@
 	}
 	&:hover::before {
 		transform: scale(1);
+		@media (max-width: 860px) {
+			transform: scale(0);
+		}
 	}
-	&:hover{
+	&:hover {
 		color: $accent-color;
 	}
-	&.active::before{
+	&.active::before {
 		position: absolute;
 		content: "";
 		bottom: -0.7rem;
@@ -46,9 +86,15 @@
 		border-radius: 2px;
 		transition: 0.3s;
 		transform: scale(1);
+		@media (max-width: 860px) {
+			transform: scale(0);
+		}
 	}
-	&.active{
+	&.active {
 		color: $accent-color;
+		@media (max-width: 860px) {
+			color: $primary-font-color;
+		}
 	}
 }
 .sortBlock {
@@ -62,11 +108,13 @@
 	border: 0.5px solid $accent-color;
 	border-radius: 0.3rem;
 	li {
-		padding: .3em 0.6em;
+		padding: 0.3em 0.6em;
 		cursor: pointer;
 		transition: 0.3s;
+		color: $primary-font-color;
 		&:hover {
 			background-color: rgb(200, 237, 200);
+			color: $accent-color;
 		}
 	}
 	.active {

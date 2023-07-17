@@ -1,36 +1,69 @@
 @import "./../../styles/variables";
 
 .menu {
+	@media (max-width: 690px) {
+		z-index: 99;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 75%;
+		min-height: 100vh;
+		background-color: #fff;
+		margin-top: 6.5rem;
+		transition: .3s;
+		transform: translateX(100%);
+	}
 	ul {
 		display: flex;
+		align-items: center;
 		gap: 5rem;
-	}
-	li {
-		position: relative;
-		font-size: 1.6rem;
-		line-height: calc(20 / 16);
-		color: $primary-font-color;
-		transition: 0.3s;
-		&:hover {
-			color: $accent-color;
-		}
-		&:before {
-			position: absolute;
-			content: "";
-			top: 2.5rem;
-			left: 0;
-			right: 0;
-			height: 2px;
-			background-color: $accent-color;
-			border-radius: 2px;
-			transition: 0.3s;
-			transform: scale(0);
-		}
-		&:hover::before {
-			transform: scale(1);
+		@media (max-width: 690px) {
+			gap: 3rem;
+			flex-direction: column;
+			padding-top: 5rem;
 		}
 	}
 }
+.menu.active{
+	transform: translateX(0);
+}
+.link {
+	position: relative;
+	font-size: 1.6rem;
+	line-height: calc(20 / 16);
+	color: $primary-font-color;
+	transition: 0.3s;
+	&:hover {
+		color: $accent-color;
+	}
+	&:before {
+		position: absolute;
+		content: "";
+		top: 2.5rem;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background-color: $accent-color;
+		border-radius: 2px;
+		transition: 0.3s;
+		transform: scale(0);
+	}
+	&:hover::before {
+		transform: scale(1);
+	}
+	@media (max-width: 690px) {
+		font-size: 2.4rem;
+		font-weight: 600;
+	}
+
+}
+.cartLink {
+	@media (max-width: 860px) {
+		display: none;
+	}
+}
+
 a:global(.active) {
 	color: $accent-color;
 }

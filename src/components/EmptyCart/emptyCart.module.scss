@@ -1,14 +1,19 @@
 @import "./../../styles/variables";
 
-
 .wrapper {
 	justify-content: center;
-	padding: 10rem 30rem;
+	padding: 8% 10%;
 	h1 {
 		font-size: 3.6rem;
 		font-weight: 700;
 		text-align: center;
 		margin-top: 1em;
+		@media (max-width: 630px) {
+			font-size: 3rem;
+		}
+		@media (max-width: 375px) {
+			font-size: 2.4rem;
+		}
 	}
 	a {
 		display: block;
@@ -29,5 +34,11 @@
 	margin: 0 auto;
 	img {
 		width: 100%;
+	}
+	@media (max-width: 630px) {
+		width: 15rem;
+	}
+	@media (max-width: 375px) {
+		width: 12rem;
 	}
 }

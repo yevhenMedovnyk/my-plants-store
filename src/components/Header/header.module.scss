@@ -1,24 +1,49 @@
 @import "./../../styles/variables";
 
 .header {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	gap: 2rem;
 	height: 8rem;
 	align-items: center;
 	border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
+	@media (max-width: 730px) {
+		height: 6.5rem;
+	}
+}
+.logoLink{
+	@media (max-width: 690px){
+		margin-right: auto;
+	}
+}
+.search {
+	z-index: 99;
+	position: absolute;
+	width: 100%;
+	background-color: #fff;
+	transition: 0.3s;
+	transform: translateY(-100%);
+}
+.search.open {
+	transform: translateY(0);
+}
+.searchIcon {
+	display: flex;
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+	
 }
 .rightBlock {
 	display: flex;
 	align-items: center;
 	gap: 3rem;
 }
-.searchIcon {
-	width: 2rem;
-	height: 2rem;
-	cursor: pointer;
-}
+
 .cartIcon {
+	display: flex;
+	align-items: center;
 	position: relative;
 	width: 2.9rem;
 	cursor: pointer;
@@ -42,20 +67,33 @@
 		line-height: calc(13 / 10);
 	}
 }
-.toAccountLink{
+.toAccountLink {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 4px;
-	background-color: $accent-color;
+	width: 3rem;
+	height: 3rem;
 	border-radius: 6px;
 	color: #ffffff;
 	font-size: 1.6rem;
 	font-weight: 500;
-	padding: 0.52em 1.06em;
 	transition: 0.3s;
 	&:hover {
 		opacity: 0.8;
 	}
+	img{
+		width: 100%;
+	}
+	
 }
-
+.burger_btn {
+	display: none;
+	@media (max-width: 690px) {
+		display: block;
+		width: 3rem;
+		height: 3rem;
+		background-color: transparent;
+		cursor: pointer;
+	}
+}

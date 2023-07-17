@@ -6,6 +6,8 @@ import sort from "./Slices/sortSlice";
 import auth from "./Slices/authSlice";
 import wishlist from "./Slices/wishlistSlice";
 import orders from "./Slices/ordersSlice";
+import search from "./Slices/searchSlice";
+
 
 export const store = configureStore({
 	reducer: {
@@ -15,5 +17,6 @@ export const store = configureStore({
 		auth,
 		wishlist,
 		orders,
+		search
 	},
 });
