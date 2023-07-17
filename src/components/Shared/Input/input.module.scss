@@ -59,10 +59,19 @@
 			border-color: $accent-color;
 			outline: none;
 		}
+		@media (max-width: 550px) {
+			padding: 0.6em;
+			font-size: 1.6rem;
+		}
 	}
 	button {
 		border-radius: 0.3em;
 		padding: 0.8em 1.39em;
+		@media (max-width: 550px) {
+			padding: 0.6em 1em;
+			font-size: 1.6rem;
+			transform: translateX(-1rem);
+		}
 	}
 	img {
 		width: 2.2rem;
@@ -71,7 +80,20 @@
 		transition: 0.3s;
 		&:hover {
 			transform: translateX(-5rem) scale(1.1);
+			@media (max-width: 860px) {
+				transform: translateX(-3.5rem) scale(1.1);
+			}
 		}
+		@media (max-width: 860px) {
+			width: 1.8rem;
+			transform: translateX(-3.5rem);
+		}
+	}
+	@media (max-width: 860px) {
+		min-width: 80%;
+	}
+	@media (max-width: 550px) {
+		min-width: 100%;
 	}
 }
 .input.footer {
@@ -80,7 +102,7 @@
 			font-size: 1.2rem;
 		}
 	}
-	button{
+	button {
 		@media (max-width: 375px) {
 			font-size: 1.4rem;
 		}

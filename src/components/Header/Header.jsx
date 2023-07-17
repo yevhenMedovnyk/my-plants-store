@@ -19,6 +19,7 @@ import logged from "./../../assets/images/logged.svg";
 import { setSearchInputValue } from "../../store/Slices/searchSlice";
 import { fetchPlants } from "../../store/Slices/mainSlice";
 import { PLANTS_URL } from "../../constants/URLs";
+import { useHandleClickOutside } from "../../helpers/useHandleClickOutside";
 
 const Header = () => {
 	const navigation = useNavigate();
@@ -48,29 +49,8 @@ const Header = () => {
 	const searchIconRef = useRef(null);
 	const burgerIconRef = useRef(null);
 	const menuRef = useRef(null);
-
-	useEffect(() => {
-		const handleClickOutside = e => {
-			let path = e.composedPath().includes(searchInputRef.current);
-			let searchIconPath = e.composedPath().includes(searchIconRef.current);
-			if (!path && !searchIconPath) {
-				setIsSearchActive(false);
-			}
-		};
-		document.body.addEventListener("click", handleClickOutside);
-		return () => document.body.removeEventListener("click", handleClickOutside);
-	}, []);
-	useEffect(() => {
-		const handleClickOutside = e => {
-			let path = e.composedPath().includes(menuRef.current);
-			let burgerIconPath = e.composedPath().includes(burgerIconRef.current);
-			if (!path && !burgerIconPath) {
-				setIsBurgerOpened(false);
-			}
-		};
-		document.body.addEventListener("click", handleClickOutside);
-		return () => document.body.removeEventListener("click", handleClickOutside);
-	}, []);
+	useHandleClickOutside(searchInputRef, searchIconRef, setIsSearchActive);
+	useHandleClickOutside(menuRef, burgerIconRef, setIsBurgerOpened);
 
 	const handleCloseClick = () => {
 		dispatch(setIsLoginRegisterOpened(false));
