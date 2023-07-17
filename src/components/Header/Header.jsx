@@ -27,7 +27,7 @@ const Header = () => {
 	const { searchInputValue } = useSelector(state => state.search);
 	const {
 		isLoginRegisterOpened,
-		user: { uid },
+		user: { uid, photoURL },
 	} = useSelector(state => state.auth);
 	const [isSearchActive, setIsSearchActive] = useState(false);
 	const [isBurgerOpened, setIsBurgerOpened] = useState(false);
@@ -46,6 +46,8 @@ const Header = () => {
 
 	const searchInputRef = useRef(null);
 	const searchIconRef = useRef(null);
+	const burgerIconRef = useRef(null);
+	const menuRef = useRef(null);
 
 	useEffect(() => {
 		const handleClickOutside = e => {
@@ -53,6 +55,17 @@ const Header = () => {
 			let searchIconPath = e.composedPath().includes(searchIconRef.current);
 			if (!path && !searchIconPath) {
 				setIsSearchActive(false);
+			}
+		};
+		document.body.addEventListener("click", handleClickOutside);
+		return () => document.body.removeEventListener("click", handleClickOutside);
+	}, []);
+	useEffect(() => {
+		const handleClickOutside = e => {
+			let path = e.composedPath().includes(menuRef.current);
+			let burgerIconPath = e.composedPath().includes(burgerIconRef.current);
+			if (!path && !burgerIconPath) {
+				setIsBurgerOpened(false);
 			}
 		};
 		document.body.addEventListener("click", handleClickOutside);
@@ -82,7 +95,12 @@ const Header = () => {
 				<Link className={style.logoLink} to='/'>
 					<Logo />
 				</Link>
-				<Menu onClickSearchIcon={handleSearchIconClick} isBurgerOpened={isBurgerOpened} />
+				<Menu
+					onClickSearchIcon={handleSearchIconClick}
+					isBurgerOpened={isBurgerOpened}
+					setIsBurgerOpened={setIsBurgerOpened}
+					menuRef={menuRef}
+				/>
 				<form
 					onSubmit={handleSearchBtnClick}
 					ref={searchInputRef}
@@ -113,14 +131,17 @@ const Header = () => {
 						{!!cartItemsCount && <span>{cartItemsCount}</span>}
 					</Link>
 					{uid ? (
-						<Link className={style.toAccountLink} to='/account'>
-							<img src={logged} alt='My account' />
+						<Link
+							className={[style.toAccountLink, photoURL ? style.picture : ""].join(" ")}
+							to='/account'
+						>
+							<img src={photoURL ? photoURL : logged} alt='My account' />
 						</Link>
 					) : (
 						<Button text='Login' onClick={handleLoginBtnClick} />
 					)}
 				</div>
-				<button onClick={handleBurgerClick} className={style.burger_btn}>
+				<button ref={burgerIconRef} onClick={handleBurgerClick} className={style.burger_btn}>
 					<img src={isBurgerOpened ? burger_close : burger} alt='burger menu' />
 				</button>
 			</header>

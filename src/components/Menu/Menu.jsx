@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom";
 import style from "./menu.module.scss";
 
-const Menu = ({isBurgerOpened}) => {
+const Menu = ({ isBurgerOpened, setIsBurgerOpened, menuRef }) => {
 	return (
-		<nav className={[style.menu, isBurgerOpened ? style.active : ""].join(" ")}>
+		<nav ref={menuRef} className={[style.menu, isBurgerOpened ? style.active : ""].join(" ")}>
 			<ul>
-				<li className={style.link}>
+				<li onClick={() => setIsBurgerOpened(false)} className={style.link}>
 					<NavLink to='/'>Home</NavLink>
 				</li>
-				<li className={style.link}>
+				<li onClick={() => setIsBurgerOpened(false)} className={style.link}>
 					<NavLink to='/plantCare'>Plant Care</NavLink>
 				</li>
-				<li className={[style.link, style.cartLink].join(" ")}>
+				<li
+					onClick={() => setIsBurgerOpened(false)}
+					className={[style.link, style.cartLink].join(" ")}
+				>
 					<NavLink to='/cart'>Shopping cart</NavLink>
 				</li>
 			</ul>
