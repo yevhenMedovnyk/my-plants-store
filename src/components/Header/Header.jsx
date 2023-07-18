@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import LoginAndRegisterPopup from "../LoginAndRegisterPopup/LoginAndRegisterPopup";
 import { setIsLoginRegisterOpened } from "../../store/Slices/authSlice";
-import { useEffect, useRef, useState } from "react";
+import {useRef, useState } from "react";
 import Input from "../Shared/Input/Input";
 
 import burger from "./../../assets/images/burger_menu.svg";

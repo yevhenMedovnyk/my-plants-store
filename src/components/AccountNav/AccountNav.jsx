@@ -10,8 +10,12 @@ import heart from "./../../assets/images/heart.svg";
 import heartGreen from "./../../assets/images/heart-green.svg";
 import AccountNavListElement from "../AccountNavListElement/AccountNavListElement";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+
+import burger from "./../../assets/images/burger_menu.svg";
+import burger_close from "./../../assets/images/burger_close.svg";
+import { useHandleClickOutside } from "../../helpers/useHandleClickOutside";
 
 const navList = [
 	{ img: heart, img_active: heartGreen, text: "Wishlist", link: "/account" },
@@ -21,6 +25,8 @@ const navList = [
 const AccountNav = () => {
 	const { pathname } = useLocation();
 	const [activeNavListItem, setActiveNavListItem] = useState();
+	const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+
 	const { displayName, email } = useSelector(state => state.auth.user);
 	const { logout } = UserAuth();
 	const handleLogout = () => {
@@ -38,26 +44,40 @@ const AccountNav = () => {
 		}
 	}, [pathname]);
 
+	const navListRef = useRef(null)
+	const burgerIconRef = useRef(null)
+	useHandleClickOutside(navListRef, burgerIconRef, setIsBurgerOpened);
+
+
 	return (
-		<div className={style.nav}>
-			<h3 className={style.title}>
-				My Account(<span>{displayName ? displayName : email}</span>)
-			</h3>
-			<ul className={style.list}>
-				{navList.map(item => (
-					<AccountNavListElement
-						key={item.link}
-						{...item}
-						onClick={handleNavListItemClick}
-						activeNavListItem={activeNavListItem}
-						setActiveNavListItem={setActiveNavListItem}
-					/>
-				))}
-			</ul>
-			<div className={style.logout}>
-				<Button onClick={handleLogout} text='Logout' img={logoutIcon} classes='logout' />
+		<>
+			<button
+				ref={burgerIconRef}
+				onClick={() => setIsBurgerOpened(!isBurgerOpened)}
+				className={style.burger_btn}
+			>
+				<img src={isBurgerOpened ? burger_close : burger} alt='burger menu' />
+			</button>
+			<div ref={navListRef} className={[style.nav, isBurgerOpened ? style.active : ""].join(" ")}>
+				{/*<h3 className={style.title}>
+				Hi, (<span>{displayName ? displayName : email}</span>)
+			</h3>*/}
+				<ul className={style.list}>
+					{navList.map(item => (
+						<AccountNavListElement
+							key={item.link}
+							{...item}
+							onClick={handleNavListItemClick}
+							activeNavListItem={activeNavListItem}
+							setActiveNavListItem={setActiveNavListItem}
+						/>
+					))}
+				</ul>
+				<div className={style.logout}>
+					<Button onClick={handleLogout} text='Logout' img={logoutIcon} classes='logout' />
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

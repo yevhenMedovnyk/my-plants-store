@@ -2,4 +2,7 @@
 	display: flex;
 	gap: 2.8rem;
 	padding: 5% 0 19.2%;
+	@media (max-width: 630px){
+		gap: 1.8rem;
+	}
 }

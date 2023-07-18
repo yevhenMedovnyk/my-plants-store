@@ -1,26 +1,29 @@
 @import "./../../styles/variables";
 
 .wrapper {
-	min-width: 100%;
+	width: 100%;
 	background-color: $secondary-bg-color;
 	padding: 1.5rem 2.5rem;
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 }
 .header {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1rem;
 }
-.orderNum{
+.orderNum {
 	color: $primary-font-color;
 }
 .images {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem;
 	margin-bottom: 1rem;
+	overflow-x: auto;
 }
 .image {
-	width: 8rem;
+	min-width: 8rem;
+	max-width: 8rem;
 	height: 8rem;
 	overflow: hidden;
 	cursor: pointer;
@@ -30,10 +33,10 @@
 		object-fit: cover;
 	}
 }
-.totalSum{
+.totalSum {
 	font-weight: 600;
 	color: $primary-font-color;
-	span{
+	span {
 		color: $accent-color;
 	}
 }
