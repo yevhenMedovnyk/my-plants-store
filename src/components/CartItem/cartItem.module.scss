@@ -18,21 +18,40 @@
 		height: 100%;
 		object-fit: cover;
 	}
+	@media (max-width: 375px) {
+		width: 5rem;
+		height: 5rem;
+	}
 }
 .text {
 	margin-right: 12.5%;
 	flex: 1;
+	@media (max-width: 1130px) {
+		margin-right: 5%;
+	}
 }
 .title {
 	font-size: 1.8rem;
 	font-weight: 500;
 	color: $primary-font-color;
+	@media (max-width: 1130px) {
+		font-size: 1.6rem;
+	}
+	@media (max-width: 550px) {
+		font-size: 1.4rem;
+	}
 }
 .price {
 	font-weight: 500;
 	margin-right: 11.8%;
+	@media (max-width: 1130px) {
+		margin-right: 5%;
+	}
+	@media (max-width: 550px) {
+		display: none;
+	}
 }
-.checkoutQuantity{
+.checkoutQuantity {
 	display: none;
 }
 .quantity {
@@ -44,12 +63,35 @@
 	span {
 		color: $primary-font-color;
 	}
+	@media (max-width: 1130px) {
+		margin-right: 5%;
+	}
+	@media (max-width: 550px) {
+		gap: 0.7rem;
+		margin-right: 3%;
+		min-width: 6rem;
+	}
 }
 .total {
 	min-width: 6.9rem;
 	font-weight: 700;
 	margin-right: 6.4%;
 	color: $accent-color;
+	@media (max-width: 1130px) {
+		margin-right: 3%;
+	}
+	@media (max-width: 550px) {
+		margin-right: 1%;
+		display: flex;
+		justify-content: center;
+	}
+	@media (max-width: 420px) {
+		font-size: 1.5rem;
+	}
+	@media (max-width: 375px) {
+		min-width: 4rem;
+
+	}
 }
 .removeIcon {
 	margin-right: 3.3%;
@@ -59,28 +101,34 @@
 			stroke: green;
 		}
 	}
+	@media (max-width: 550px) {
+		margin-right: 1%;
+	}
+	@media (max-width: 420px) {
+		display: none;
+	}
 }
 .wrapper:global(.checkout) {
 	.price {
 		display: none;
 	}
-	.total{
+	.total {
 		margin-right: 1.6rem;
 		text-align: right;
 	}
-	.removeIcon{
+	.removeIcon {
 		display: none;
 	}
-	.quantity{
+	.quantity {
 		display: none;
 	}
-	.checkoutQuantity{
+	.checkoutQuantity {
 		display: block;
 		margin-right: 3.7rem;
 		font-size: 1.4rem;
 		min-width: 4rem;
 	}
-	.title{
+	.title {
 		font-size: 1.6rem;
 	}
 }

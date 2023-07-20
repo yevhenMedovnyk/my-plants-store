@@ -4,10 +4,22 @@
 	display: flex;
 	gap: 7.2%;
 	padding: 5rem 0 8rem 0;
+	@media (max-width: 1130px) {
+		gap: 3%;
+	}
+	@media (max-width: 860px) {
+		flex-direction: column;
+	}
+
+
 }
 .products {
 	min-width: 65%;
 	flex-shrink: 0;
+	@media (max-width: 860px) {
+		margin-bottom: 5%;
+	}
+
 }
 .totals {
 	width: 35%;
@@ -17,6 +29,16 @@
 		color: $primary-font-color;
 		font-size: 1.8rem;
 	}
+	@media (max-width: 860px) {
+		width: 50%;
+	}
+	@media (max-width: 630px) {
+		width: 60%;
+	}
+	@media (max-width: 550px) {
+		width: 100%;
+	}
+
 }
 .titleContainer {
 	display: flex;
