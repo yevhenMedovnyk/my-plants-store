@@ -1,5 +1,5 @@
 @import "./../../styles/variables";
-.wrapper{
+.wrapper {
 	z-index: 99;
 	position: absolute;
 	left: 0;
@@ -8,29 +8,40 @@
 	bottom: 0;
 	background-color: rgba(229, 229, 229, 0.4);
 }
-.container{
+.container {
 	display: flex;
 	flex-direction: column;
 	max-width: 57.8rem;
 	margin: 10rem auto;
 	background-color: #fff;
 	text-align: center;
+	@media (max-width: 750px) {
+		max-width: 40rem;
+	}
 }
-.headerTop{
+.headerTop {
 	background: rgba(70, 163, 88, 0.06);
-	padding: 2.9rem 1rem 1.5rem ;
-	img{
+	padding: 2.9rem 1rem 1.5rem;
+	img {
 		margin-bottom: 1.6rem;
+		@media (max-width: 750px) {
+			margin-bottom: 1rem;
+		}
 	}
-	p{
-		
+	p {
+	}
+	@media (max-width: 750px) {
+		padding: 2rem 1rem 1.2rem;
 	}
 }
-.orderDetails{
+.orderDetails {
 	margin: 1.8rem 4.2rem 2.1rem 4.2rem;
 	border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
+	@media (max-width: 475px) {
+		margin: 1.8rem 2rem 2.1rem 2rem;
+	}
 }
-.title{
+.title {
 	text-align: left;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -53,14 +64,21 @@
 		color: $accent-color;
 	}
 }
-.info{
+.info {
 	padding: 0 4.8rem;
 	font-size: 1.4rem;
 	line-height: calc(22 / 14);
 	margin-bottom: 3.3em;
+	@media (max-width: 750px) {
+		margin-bottom: 1.7rem;
+		font-size: 1.2rem;
+	}
 }
-.button{
+.button {
 	max-width: 16.2rem;
 	align-self: center;
 	margin-bottom: 4.8rem;
+	@media (max-width: 750px) {
+		margin-bottom: 2rem;
+	}
 }

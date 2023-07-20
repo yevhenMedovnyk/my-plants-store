@@ -1,6 +1,7 @@
 @import "./../../styles/variables";
 
 .header {
+	z-index: 999;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
@@ -8,6 +9,12 @@
 	height: 8rem;
 	align-items: center;
 	border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
+	@media (max-width: 690px) {
+		background-color: #fff;
+		position: fixed;
+		right: 1.5rem;
+		left: 1.5rem;
+	}
 	@media (max-width: 730px) {
 		height: 6.5rem;
 	}

@@ -2,8 +2,24 @@
 	display: flex;
 	justify-content: space-between;
 	margin: 3% 0 17.5% 0;
+	@media (max-width: 960px){
+		flex-direction: column;
+	}
 }
 .orders{
 	max-width: 40.5rem;
 	width: 100%;
+	@media (max-width: 960px) {
+		max-width: 50%;
+	}
+	@media (max-width: 730px) {
+		max-width: 60%;
+	}
+	@media (max-width: 630px) {
+		max-width: 70%;
+	}
+	@media (max-width: 475px) {
+		max-width: 100%;
+	}
+
 }

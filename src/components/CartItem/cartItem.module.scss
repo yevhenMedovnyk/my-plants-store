@@ -90,7 +90,6 @@
 	}
 	@media (max-width: 375px) {
 		min-width: 4rem;
-
 	}
 }
 .removeIcon {
@@ -109,12 +108,18 @@
 	}
 }
 .wrapper:global(.checkout) {
+	.image {
+		width: 5rem;
+		height: 5rem;
+	}
 	.price {
 		display: none;
 	}
 	.total {
 		margin-right: 1.6rem;
 		text-align: right;
+		display: flex;
+		justify-content: end;
 	}
 	.removeIcon {
 		display: none;
@@ -127,8 +132,14 @@
 		margin-right: 3.7rem;
 		font-size: 1.4rem;
 		min-width: 4rem;
+		@media (max-width: 1130px) {
+			margin-right: 1rem;
+		}
 	}
 	.title {
 		font-size: 1.6rem;
+		@media (max-width: 750px) {
+			font-size: 1.4rem;
+		}
 	}
 }

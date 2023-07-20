@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import LoginAndRegisterPopup from "../LoginAndRegisterPopup/LoginAndRegisterPopup";
 import { setIsLoginRegisterOpened } from "../../store/Slices/authSlice";
-import {useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Input from "../Shared/Input/Input";
 
 import burger from "./../../assets/images/burger_menu.svg";
@@ -20,6 +20,7 @@ import { setSearchInputValue } from "../../store/Slices/searchSlice";
 import { fetchPlants } from "../../store/Slices/mainSlice";
 import { PLANTS_URL } from "../../constants/URLs";
 import { useHandleClickOutside } from "../../helpers/useHandleClickOutside";
+import { useDisableBodyScroll } from "../../helpers/useDisableBodyScroll";
 
 const Header = () => {
 	const navigation = useNavigate();
@@ -32,6 +33,8 @@ const Header = () => {
 	} = useSelector(state => state.auth);
 	const [isSearchActive, setIsSearchActive] = useState(false);
 	const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+	
+	useDisableBodyScroll(isBurgerOpened);
 
 	const handleSearchIconClick = () => {
 		setIsSearchActive(true);

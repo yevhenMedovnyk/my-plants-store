@@ -9,4 +9,7 @@
 
 .containerBottom{
 	padding-left: 21%;
+		@media (max-width: 960px){
+			padding-left: 0;
+		}
 }

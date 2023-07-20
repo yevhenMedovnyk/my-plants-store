@@ -10,17 +10,19 @@
 		font-size: 1.5rem;
 		margin-bottom: 1rem;
 		color: $primary-font-color;
+		@media (max-width: 630px) {
+			margin-bottom: 0.7rem;
+		}
 	}
 	label.required::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			right: -11px;
-			background: url("./../../../assets/images/required.svg") no-repeat;
-			width: 0.8rem;
-			height: 0.8rem;
-		}
-	
+		content: "";
+		position: absolute;
+		top: 0;
+		right: -11px;
+		background: url("./../../../assets/images/required.svg") no-repeat;
+		width: 0.8rem;
+		height: 0.8rem;
+	}
 
 	input {
 		height: 4rem;
@@ -30,17 +32,23 @@
 		padding: 0.95em;
 		&::placeholder {
 			color: #a5a5a5;
+			@media (max-width: 630px) {
+				font-size: 1.2rem;
+			}
 		}
-		&:focus{
+		&:focus {
 			border-color: $accent-color;
 			outline: none;
+		}
+		@media (max-width: 630px) {
+			height: 3.4rem;
 		}
 	}
 	span {
 		color: red;
 		font-size: 12px;
 		display: none;
-		margin: 0.7rem .8rem;
+		margin: 0.7rem 0.8rem;
 	}
 }
 input:invalid[focused="true"] ~ span {

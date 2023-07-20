@@ -9,12 +9,27 @@
 		font-weight: 700;
 		color: $primary-font-color;
 	}
+	@media (max-width: 1130px) {
+		margin-right: 3%;
+	}
+	@media (max-width: 960px) {
+		margin-bottom: 3rem;
+		margin-right: 0;
+	}
+	
+	
 }
 .inputs {
 	display: grid;
 	grid-template: 1fr / 1fr 1fr;
 	gap: 3rem 2.2rem;
-	
+	@media (max-width: 1130px) {
+		gap: 2rem 1.3rem;
+	}
+	@media (max-width: 475px) {
+		display: flex;
+		flex-direction: column;
+		}
 }
 .textarea {
 	display: flex;
@@ -32,10 +47,12 @@
 		resize: none;
 		border: 1px solid #eaeaea;
 		border-radius: 3px;
-		&:focus{
+		&:focus {
 			border-color: $accent-color;
 			outline: none;
 		}
-		
+		@media (max-width: 1130px) {
+			min-height: 10rem;
+		}
 	}
 }
