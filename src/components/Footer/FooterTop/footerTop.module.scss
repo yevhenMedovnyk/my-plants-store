@@ -7,21 +7,22 @@
 	background-color: $secondary-bg-color;
 	padding: 2.5rem 2.5rem 3rem 2.5rem;
 	gap: 3rem 2.7rem;
-	@media (max-width: 630px){
-		justify-content: center;
+	@media (max-width: 630px) {
+		justify-content: space-around;
 		gap: 1.5rem;
 	}
 }
+
 .join {
-	margin-left: 2.9%;
 	flex: 1;
-	h5{
+	max-width: 40rem;
+	h5 {
 		font-size: 1.8rem;
 		font-weight: 700;
 		color: $primary-font-color;
 		margin-bottom: 0.9em;
 	}
-	p{
+	p {
 		font-size: 1.3rem;
 		line-height: calc(22 / 13);
 		margin-top: 1.3em;

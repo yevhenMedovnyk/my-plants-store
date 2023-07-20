@@ -34,6 +34,7 @@ const AccountNav = () => {
 	};
 	const handleNavListItemClick = itemName => {
 		setActiveNavListItem(itemName);
+		setIsBurgerOpened(false)
 	};
 	useEffect(() => {
 		if (pathname === "/account") {

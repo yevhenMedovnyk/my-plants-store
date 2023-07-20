@@ -90,7 +90,7 @@ const ShopItemPage = () => {
 						<span>{count}</span>
 						<Button text='+' classes='plusMinus' onClick={handlePlusClick} />
 					</div>
-					<Link to='/cart/checkout'>
+					<Link to='/cart/checkout' className={style.byNow}>
 						<Button text='Buy NOW' classes='plantItem' onClick={onClickAddToCart} />
 					</Link>
 					<Button

@@ -30,6 +30,10 @@
 			}
 		}
 	}
+	@media (max-width: 550px) {
+		font-size: 1.4rem;
+		padding: 0.4em .7em;
+	}
 }
 .btn-wrapper.plantItem {
 	color: #ffffff;
@@ -37,6 +41,10 @@
 	text-transform: uppercase;
 	font-weight: 700;
 	height: 4rem;
+	@media (max-width: 550px) {
+		font-size: 1.4rem;
+		padding: 0.4em .7em;
+	}
 }
 .btn-wrapper.cartTotal {
 	color: #ffffff;

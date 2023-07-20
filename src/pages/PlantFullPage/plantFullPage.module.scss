@@ -5,6 +5,9 @@
 	display: flex;
 	padding: 4.3rem 0 12.8rem 0;
 	gap: 4.42%;
+	@media (max-width: 1130px){
+		flex-direction: column;
+	}
 }
 .image {
 	flex: 1;
@@ -12,6 +15,12 @@
 	img{
 		width: 100%;
 	}
+	@media (max-width: 1130px){
+		max-width: 60rem;
+		margin-bottom: 3rem;
+		align-self: center;
+	}
+
 }
 .content {
 	flex: 1;
@@ -29,12 +38,15 @@
 		font-weight: 700;
 		color: $primary-font-color;
 		margin-bottom: 0.6em;
+		
 	}
 	span{
 		font-size: 2.2rem;
 		font-weight: 700;
 		color: $accent-color;
 	}
+	
+
 }
 .descTitle{
 	font-weight: 500;
@@ -45,6 +57,14 @@
 	font-size: 1.4rem;
 	line-height: calc(24 / 14);
 	margin-bottom: 1.71em;
+	@media (max-width: 1130px){
+		max-width: 30em;
+	}
+	@media (max-width: 550px){
+		margin-bottom: 1em;
+	}
+
+
 }
 .action{
 	display: flex;
@@ -60,4 +80,19 @@
 		color: $primary-font-color;
 		font-weight: 500;
 	}
+	@media (max-width: 550px){
+		column-gap: 1rem;
+
+	}
+	@media (max-width: 422px){
+		margin-right: 1.2rem;
+	}
+
+
+}
+.byNow{
+	@media (max-width: 422px){
+		display: none;
+	}
+
 }
