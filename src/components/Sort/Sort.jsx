@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import style from "./sort.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { setCurrentPage } from "../../store/Slices/mainSlice";
 import Button from "../UI/Button/Button";
 
 import filter from "./../../assets/images/filter.svg";
+import { useHandleClickOutside } from "../../helpers/useHandleClickOutside";
 
 const sortValueArr = [
 	{ name: "Min price", order: "asc", sortby: "price" },
@@ -41,11 +42,27 @@ const Sort = () => {
 		setCategoryOpened(!categoryOpened);
 	};
 
+	const categoryPopupRef = useRef(null);
+	const sortPopupRef = useRef(null);
+	const categoryBtnRef = useRef(null);
+	const sortBtnRef = useRef(null);
+	useHandleClickOutside(categoryPopupRef, categoryBtnRef, setCategoryOpened);
+	useHandleClickOutside(sortPopupRef, sortBtnRef, setSortOpened);
+
 	return (
 		<div className={style.wrapper}>
 			{/*<button className={style.filter_btn}>Filter: </button>*/}
-			<Button text='Filter' img={filter} classes='sort' onClick={handleFilterBtnClick} />
-			<ul className={[style.filter, categoryOpened ? style.active : ""].join(" ")}>
+			<Button
+				BtnRef={categoryBtnRef}
+				text='Filter'
+				img={filter}
+				classes='sort'
+				onClick={handleFilterBtnClick}
+			/>
+			<ul
+				ref={categoryPopupRef}
+				className={[style.filter, categoryOpened ? style.active : ""].join(" ")}
+			>
 				{categories.map(categoryName => (
 					<li
 						onClick={() => handleCategoryClick(categoryName)}
@@ -56,9 +73,9 @@ const Sort = () => {
 					</li>
 				))}
 			</ul>
-			<div className={style.sortBlock}>
+			<div ref={sortPopupRef} className={style.sortBlock}>
 				<div className={style.sortTitle}>
-					<label>
+					<label ref={sortBtnRef}>
 						Sort by:{" "}
 						<input
 							onClick={() => setSortOpened(!sortOpened)}

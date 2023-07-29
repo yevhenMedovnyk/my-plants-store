@@ -3,8 +3,8 @@ import { useEffect } from "react";
 export const useHandleClickOutside = (ref, secondRef, set) => {
 	useEffect(() => {
 		const handleClickOutside = e => {
-			let path = e.composedPath().includes(ref.current);
-			let secondPath = e.composedPath().includes(secondRef.current);
+			let path = e.composedPath().includes(ref?.current);
+			let secondPath = e.composedPath().includes(secondRef?.current);
 			if (!path && !secondPath) {
 				set(false);
 			}

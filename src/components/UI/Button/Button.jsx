@@ -1,10 +1,11 @@
 import "./button.scss";
 
-const Button = ({ text, img, alt, classes, onClick, type, disabled }) => {
+const Button = ({ text, img, alt, classes, onClick, type, disabled, BtnRef }) => {
 	return (
 		<button
+			ref={BtnRef}
 			disabled={disabled}
-			style={disabled ? { opacity: 0.3, pointerEvents: "none"} : null}
+			style={disabled ? { opacity: 0.3, pointerEvents: "none" } : null}
 			type={type}
 			onClick={onClick}
 			className={`btn-wrapper ${classes} `}
