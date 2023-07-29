@@ -12,7 +12,14 @@ const FooterContacts = () => {
 			<Logo />
 			<div className={style.contactsItem}>
 				<img src={location} alt='location' />
-				<p className={style.address}>70 West Buckingham Ave. Farmingdale, NY 11735</p>
+				<a
+					href='http://maps.google.com/?q=70 West Buckingham Ave. Farmingdale, NY 11735'
+					className={style.address}
+					target='_blank'
+					rel='noreferrer'
+				>
+					70 West Buckingham Ave. Farmingdale, NY 11735
+				</a>
 			</div>
 			<div className={style.contactsItem}>
 				<img src={email} alt='email' />
