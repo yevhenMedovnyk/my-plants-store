@@ -85,19 +85,18 @@ const Sort = () => {
 						/>
 					</label>
 				</div>
-				{sortOpened && (
-					<ul className={style.sortPopup}>
-						{sortValueArr.map(el => (
-							<li
-								className={el.name === sortValue ? style.active : ""}
-								key={el.name}
-								onClick={() => handleClick(el)}
-							>
-								{el.name}
-							</li>
-						))}
-					</ul>
-				)}
+
+				<ul className={[style.sortPopup, sortOpened ? style.active : ""].join(" ")}>
+					{sortValueArr.map(el => (
+						<li
+							className={el.name === sortValue ? style.active : ""}
+							key={el.name}
+							onClick={() => handleClick(el)}
+						>
+							{el.name}
+						</li>
+					))}
+				</ul>
 			</div>
 		</div>
 	);

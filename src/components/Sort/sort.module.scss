@@ -10,7 +10,7 @@
 		padding: 0rem 3rem;
 	}
 	@media (max-width: 860px) {
-		padding: 0rem .4rem;
+		padding: 0rem 0.4rem;
 	}
 }
 
@@ -101,12 +101,16 @@
 	position: relative;
 }
 .sortPopup {
+	background-color: #fff;
+
 	z-index: 4;
 	position: absolute;
-	right: 0;
-	top: -7rem;
 	border: 0.5px solid $accent-color;
 	border-radius: 0.3rem;
+	right: 1rem;
+	top: 5rem;
+	transition: 0.3s;
+	transform: translateX(130%);
 	li {
 		padding: 0.3em 0.6em;
 		cursor: pointer;
@@ -121,6 +125,9 @@
 		background-color: rgb(200, 237, 200);
 		color: $primary-font-color;
 	}
+}
+.sortPopup.active {
+	transform: translateX(0);
 }
 .sortTitle {
 	color: $primary-font-color;
