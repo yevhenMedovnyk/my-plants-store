@@ -10,6 +10,7 @@ import {
 import { setUserData } from "../store/Slices/authSlice";
 import { useDispatch } from "react-redux";
 import { auth } from "../firebase";
+import { updateProfile } from "firebase/auth";
 
 const AuthContext = createContext();
 
@@ -37,10 +38,12 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	};
 
-	const registerWithEmail = async (inputEmail, password) => {
+	const registerWithEmail = async (inputEmail, password, username) => {
 		try {
 			const userCredential = await createUserWithEmailAndPassword(auth, inputEmail, password);
-			console.log(userCredential.user);
+			await updateProfile(auth.currentUser, {
+				displayName: username,
+			});
 
 			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
 			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));

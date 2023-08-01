@@ -27,14 +27,15 @@ const AccountNav = () => {
 	const [activeNavListItem, setActiveNavListItem] = useState();
 	const [isBurgerOpened, setIsBurgerOpened] = useState(false);
 
-	const { displayName, email } = useSelector(state => state.auth.user);
+	const { displayName } = useSelector(state => state.auth.user);
+	const name = displayName.split(" ")[0];
 	const { logout } = UserAuth();
 	const handleLogout = () => {
 		logout();
 	};
 	const handleNavListItemClick = itemName => {
 		setActiveNavListItem(itemName);
-		setIsBurgerOpened(false)
+		setIsBurgerOpened(false);
 	};
 	useEffect(() => {
 		if (pathname === "/account") {
@@ -45,10 +46,9 @@ const AccountNav = () => {
 		}
 	}, [pathname]);
 
-	const navListRef = useRef(null)
-	const burgerIconRef = useRef(null)
+	const navListRef = useRef(null);
+	const burgerIconRef = useRef(null);
 	useHandleClickOutside(navListRef, burgerIconRef, setIsBurgerOpened);
-
 
 	return (
 		<>
@@ -60,9 +60,9 @@ const AccountNav = () => {
 				<img src={isBurgerOpened ? burger_close : burger} alt='burger menu' />
 			</button>
 			<div ref={navListRef} className={[style.nav, isBurgerOpened ? style.active : ""].join(" ")}>
-				{/*<h3 className={style.title}>
-				Hi, (<span>{displayName ? displayName : email}</span>)
-			</h3>*/}
+				<h3 className={style.title}>
+					Hi, (<span>{name}</span>)
+				</h3>
 				<ul className={style.list}>
 					{navList.map(item => (
 						<AccountNavListElement

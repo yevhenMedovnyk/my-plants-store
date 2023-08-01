@@ -16,6 +16,7 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 	const { registerInputValues, loginInputValues } = useSelector(state => state.auth);
 	const { accessToken } = useSelector(state => state.auth.user);
 
+
 	const { loginWidthGoogle, loginWithEmail, registerWithEmail } = UserAuth();
 
 	const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 
 	const handleEmailRegister = e => {
 		e.preventDefault();
-		registerWithEmail(registerInputValues.email, registerInputValues.password);
+		registerWithEmail(registerInputValues.email, registerInputValues.password, registerInputValues?.username);
 	};
 	const handleEmailLogin = e => {
 		e.preventDefault();
