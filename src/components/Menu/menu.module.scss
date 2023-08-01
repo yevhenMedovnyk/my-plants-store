@@ -62,11 +62,6 @@
 	}
 
 }
-.cartLink {
-	@media (max-width: 860px) {
-		display: none;
-	}
-}
 
 a:global(.active) {
 	color: $accent-color;

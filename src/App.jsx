@@ -4,7 +4,6 @@ import Layout from "./../src/components/Layout/Layout";
 import HomePage from "./pages/HomePage/HomePage";
 import "./App.css";
 
-import PlantCarePage from "./pages/PlantCarePage/PlantCarePage";
 import BlogsPage from "./pages/BlogsPage/BlogsPage";
 import ShopItemPage, { fetchData } from "./pages/PlantFullPage/PlantFullPage";
 import CartPage from "./pages/CartPage/CartPage";
@@ -30,10 +29,6 @@ export const router = createBrowserRouter([
 				path: "/plant/:id",
 				element: <ShopItemPage />,
 				loader: fetchData,
-			},
-			{
-				path: "/plantCare",
-				element: <PlantCarePage />,
 			},
 			{
 				path: "/search",

@@ -8,9 +8,6 @@ const Menu = ({ isBurgerOpened, setIsBurgerOpened, menuRef }) => {
 				<li onClick={() => setIsBurgerOpened(false)} className={style.link}>
 					<NavLink to='/'>Home</NavLink>
 				</li>
-				<li onClick={() => setIsBurgerOpened(false)} className={style.link}>
-					<NavLink to='/plantCare'>Plant Care</NavLink>
-				</li>
 				<li
 					onClick={() => setIsBurgerOpened(false)}
 					className={[style.link, style.cartLink].join(" ")}
