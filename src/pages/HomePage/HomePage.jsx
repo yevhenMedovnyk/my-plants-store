@@ -42,7 +42,7 @@ const HomePage = () => {
 					<Sort />
 					<div className={style.storeItems}>
 						{status === "loading" ? (
-							<p style={{ paddingTop: 20, paddingLeft: 20 }}>Loading...</p>
+							<p style={{ paddingBlock: 60, paddingLeft: 20 }}>Loading...</p>
 						) : null}
 						{status === "resolved" && shopItems.map(item => <ShopItem key={item.id} {...item} />)}
 					</div>
