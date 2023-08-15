@@ -19,6 +19,9 @@ export const AuthContextProvider = ({ children }) => {
 	const loginWidthGoogle = async () => {
 		try {
 			const provider = new GoogleAuthProvider();
+			provider.setCustomParameters({
+				prompt: "select_account",
+			});
 			const userCredential = await signInWithPopup(auth, provider);
 			const { displayName, email, photoURL, accessToken, uid } = userCredential.user;
 			dispatch(setUserData({ displayName, email, photoURL, accessToken, uid }));

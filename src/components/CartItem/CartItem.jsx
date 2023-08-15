@@ -17,6 +17,8 @@ const CartItem = ({ image_link, plant_name, price, count, id, classes }) => {
 	};
 	const totalSum = price * count;
 
+
+
 	return (
 		<div className={[style.wrapper, classes].join(" ")}>
 			<div className={style.image}>
@@ -28,9 +30,9 @@ const CartItem = ({ image_link, plant_name, price, count, id, classes }) => {
 			<span className={style.price}>${price}</span>
 			<div className={style.checkoutQuantity}>(x {count})</div>
 			<div className={style.quantity}>
-				<Button text='-' classes='plusMinusCart' type="button" onClick={handleMinusClick} />
+				<Button text='-' classes='plusMinusCart' type='button' onClick={handleMinusClick} />
 				<span>{count}</span>
-				<Button text='+' classes='plusMinusCart' type="button" onClick={handlePlusClick} />
+				<Button text='+' classes='plusMinusCart' type='button' onClick={handlePlusClick} />
 			</div>
 			<span className={style.total}>${totalSum.toFixed(2)}</span>
 			<div className={style.removeIcon} onClick={removeItem}>

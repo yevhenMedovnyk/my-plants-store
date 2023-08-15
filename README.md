@@ -1,6 +1,5 @@
 ## my-plants-store
 
-If you are launching the application for the first time, please wait about 15-20 seconds until you receive a response from the server
 
 This is a React application where you can buy plants and accessories for them. Implemented the main page, shopping cart with full functionality, authorization and registration using Firebase, and others
 

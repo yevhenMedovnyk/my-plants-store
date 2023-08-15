@@ -1,4 +1,4 @@
-export const WISHLIST_URL = "https://plants-api-dkpe.onrender.com/wishlist"
-export const PLANTS_URL = "https://plants-api-dkpe.onrender.com/plants"
-export const ORDERS_URL = "https://plants-api-dkpe.onrender.com/orders"
-export const COUPONS_URL = "https://plants-api-dkpe.onrender.com/coupons"
+export const WISHLIST_URL = "https://plants-market.glitch.me/wishlist";
+export const PLANTS_URL = "https://plants-market.glitch.me/plants";
+export const ORDERS_URL = "https://plants-market.glitch.me/orders";
+export const COUPONS_URL = "https://plants-market.glitch.me/coupons";

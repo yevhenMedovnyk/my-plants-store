@@ -16,7 +16,6 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 	const { registerInputValues, loginInputValues } = useSelector(state => state.auth);
 	const { accessToken } = useSelector(state => state.auth.user);
 
-
 	const { loginWidthGoogle, loginWithEmail, registerWithEmail } = UserAuth();
 
 	const dispatch = useDispatch();
@@ -29,14 +28,18 @@ const LoginAndRegisterPopup = ({ handleCloseClick }) => {
 
 	const handleEmailRegister = e => {
 		e.preventDefault();
-		registerWithEmail(registerInputValues.email, registerInputValues.password, registerInputValues?.username);
+		registerWithEmail(
+			registerInputValues.email,
+			registerInputValues.password,
+			registerInputValues?.username,
+		);
 	};
 	const handleEmailLogin = e => {
 		e.preventDefault();
 		loginWithEmail(loginInputValues.email, loginInputValues.password);
 	};
-	const handleGoogleLogin = () => {
-		loginWidthGoogle();
+	const handleGoogleLogin = async () => {
+		await loginWidthGoogle();
 	};
 
 	useEffect(() => {
