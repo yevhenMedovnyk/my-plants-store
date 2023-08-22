@@ -11,7 +11,7 @@ but you can already try it by following the link https://plants-market.netlify.a
 Scripts:
 start: "npm run dev"
 
-Discount coupons: "Yevhen", "Vova", "Plant"
+Discount coupons: "Yevhen", "Plant"
 
 Technologies:
 - ReactJS
@@ -20,7 +20,7 @@ Technologies:
 - JSONPlaceholder API
 - Axios
 - Firebase
-- SASS
+- SCSS
 - VITE
 - React-paginate
 - React-responsive-carousel
