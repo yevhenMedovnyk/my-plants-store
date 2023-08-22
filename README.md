@@ -9,7 +9,7 @@ but you can already try it by following the link https://plants-market.netlify.a
 ---
 
 Scripts:
-start: "npm run dev"
+start app: "npm run dev"
 
 Discount coupons: "Yevhen", "Plant"
 
