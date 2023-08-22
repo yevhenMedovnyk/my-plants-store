@@ -17,7 +17,8 @@ const MainSlider = () => {
 			emulateTouch={true}
 			className={style.wrapper}
 			showThumbs={false}
-			infiniteLoop={true}
+			//preventMovementUntilSwipeScrollTolerance={true}
+			swipeScrollTolerance={50}
 		>
 			<SliderItem img={mainImg} />
 			<SliderItem img={superSale} />
