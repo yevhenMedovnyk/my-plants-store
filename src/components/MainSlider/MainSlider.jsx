@@ -17,7 +17,7 @@ const MainSlider = () => {
 			emulateTouch={true}
 			className={style.wrapper}
 			showThumbs={false}
-			//preventMovementUntilSwipeScrollTolerance={true}
+			preventMovementUntilSwipeScrollTolerance={true}
 			swipeScrollTolerance={50}
 		>
 			<SliderItem img={mainImg} />
