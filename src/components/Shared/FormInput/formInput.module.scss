@@ -1,4 +1,4 @@
-@import "./../../../styles/variables";
+@use  "./../../../styles/variables" as var;
 
 .formInput {
 	display: flex;
@@ -9,7 +9,7 @@
 		position: relative;
 		font-size: 1.5rem;
 		margin-bottom: 1rem;
-		color: $primary-font-color;
+		color: var.$primary-font-color;
 		@media (max-width: 630px) {
 			margin-bottom: 0.7rem;
 		}
@@ -37,7 +37,7 @@
 			}
 		}
 		&:focus {
-			border-color: $accent-color;
+			border-color: var.$accent-color;
 			outline: none;
 		}
 		@media (max-width: 630px) {
