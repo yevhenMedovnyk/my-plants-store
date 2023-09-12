@@ -9,6 +9,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPlants, setCurrentPage } from "../../store/Slices/mainSlice";
 import { PLANTS_URL } from "../../constants/URLs";
+import { PulseLoader } from "react-spinners";
 
 const HomePage = () => {
 	const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const HomePage = () => {
 					<Sort />
 					<div className={style.storeItems}>
 						{status === "loading" ? (
-							<p style={{ paddingBlock: 60, paddingLeft: 20 }}>Loading...</p>
+							<PulseLoader color="#46a459" cssOverride={{display: "flex", justifyContent: "center", marginBlock: "2rem"}} />
 						) : null}
 						{status === "resolved" && shopItems.map(item => <ShopItem key={item.id} {...item} />)}
 					</div>
