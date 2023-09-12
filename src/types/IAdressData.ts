@@ -10,4 +10,5 @@ export interface IAdressData{
 	email: string;
 	phone: string;
 	notes: string;
+	[key: string]: string
 }

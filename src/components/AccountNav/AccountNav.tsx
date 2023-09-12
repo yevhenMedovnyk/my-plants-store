@@ -38,7 +38,7 @@ const AccountNav: FC = () => {
 	const name = displayName?.split(" ")[0];
 
 
-	const { logout } = UserAuth();
+	const { logout  } : any = UserAuth();
 	const handleLogout = () => {
 		logout();
 	};

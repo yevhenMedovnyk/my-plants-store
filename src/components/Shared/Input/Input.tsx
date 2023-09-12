@@ -1,16 +1,16 @@
-import { FC, useRef } from "react";
-import style from "./input.module.scss";
+import {FC, useRef} from 'react';
+import style from './input.module.scss';
 
-import removeIcon from "./../../../assets/images/remove-icon.svg";
+import removeIcon from './../../../assets/images/remove-icon.svg';
 
 type InputProps = {
 	placeholder: string;
 	text: string;
 	type?: string;
-	btnType?: "submit" | "reset" | "button" | undefined;
+	btnType?: 'submit' | 'reset' | 'button' | undefined;
 	classes?: string;
 	onClick?: () => void;
-	onClickRemove?: (ref: any) => void;
+	onClickRemove?: (ref: React.RefObject<HTMLInputElement>) => void;
 	onChange?: (e: any) => void;
 	value?: string;
 	img?: boolean;
@@ -31,7 +31,7 @@ const Input: FC<InputProps> = ({
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	return (
-		<div className={[style.input, style[`${classes}`]].join(" ")}>
+		<div className={[style.input, style[`${classes}`]].join(' ')}>
 			<input
 				value={value}
 				type={type}
@@ -39,7 +39,9 @@ const Input: FC<InputProps> = ({
 				onChange={onChange}
 				ref={inputRef}
 			/>
-			{img && <img src={removeIcon} alt='remove' onClick={() => onClickRemove(inputRef)} />}
+			{img && onClickRemove && (
+				<img src={removeIcon} alt="remove" onClick={() => onClickRemove(inputRef)} />
+			)}
 			<button type={btnType} onClick={onClick}>
 				{text}
 			</button>

@@ -1,4 +1,4 @@
-import { useContext, createContext, useEffect } from "react";
+import {useContext, createContext, useEffect} from 'react';
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
@@ -6,12 +6,11 @@ import {
 	GoogleAuthProvider,
 	signOut,
 	onAuthStateChanged,
-} from "firebase/auth";
-import { setUserData } from "../store/Slices/authSlice";
-import { useDispatch } from "react-redux";
-import { auth } from "../firebase";
-import { updateProfile } from "firebase/auth";
-
+} from 'firebase/auth';
+import {setUserData} from '../store/Slices/authSlice';
+import {useDispatch} from 'react-redux';
+import {auth} from '../firebase';
+import {updateProfile} from 'firebase/auth';
 
 type ChildrenProps = {
 	children: string | JSX.Element | JSX.Element[];
@@ -19,17 +18,17 @@ type ChildrenProps = {
 
 const AuthContext = createContext();
 
-export const AuthContextProvider = ({ children }: ChildrenProps) => {
+export const AuthContextProvider = ({children}: ChildrenProps) => {
 	const dispatch = useDispatch();
 	const loginWidthGoogle = async () => {
 		try {
 			const provider = new GoogleAuthProvider();
 			provider.setCustomParameters({
-				prompt: "select_account",
+				prompt: 'select_account',
 			});
 			const userCredential = await signInWithPopup(auth, provider);
-			const { displayName, email, photoURL, uid } = userCredential.user;
-			dispatch(setUserData({ displayName, email, photoURL, uid }));
+			const {displayName, email, photoURL, uid} = userCredential.user;
+			dispatch(setUserData({displayName, email, photoURL, uid}));
 		} catch (error) {
 			console.log(error);
 		}
@@ -39,8 +38,8 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
 		try {
 			const userCredential = await signInWithEmailAndPassword(auth, inputEmail, password);
 			console.log(userCredential.user);
-			const { displayName, email, photoURL, uid } = userCredential.user;
-			dispatch(setUserData({ displayName, email, photoURL, uid }));
+			const {displayName, email, photoURL, uid} = userCredential.user;
+			dispatch(setUserData({displayName, email, photoURL, uid}));
 		} catch (error) {
 			console.log(error);
 		}
@@ -53,8 +52,8 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
 				displayName: username,
 			});
 
-			const { displayName, email, photoURL, uid } = userCredential.user;
-			dispatch(setUserData({ displayName, email, photoURL, uid }));
+			const {displayName, email, photoURL, uid} = userCredential.user;
+			dispatch(setUserData({displayName, email, photoURL, uid}));
 		} catch (error) {
 			console.log(error);
 		}
@@ -67,18 +66,20 @@ export const AuthContextProvider = ({ children }: ChildrenProps) => {
 		}
 	};
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, currentUser => {
-			const displayName = currentUser?.displayName;
-			const email = currentUser?.email;
-			const photoURL = currentUser?.photoURL;
-			const uid = currentUser?.uid;
-			dispatch(setUserData({ displayName, email, photoURL, uid }));
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			if (currentUser) {
+				const displayName = currentUser.displayName;
+				const email = currentUser.email;
+				const photoURL = currentUser.photoURL;
+				const uid = currentUser.uid;
+				dispatch(setUserData({displayName, email, photoURL, uid}));
+			}
 		});
 		return () => unsubscribe();
 	}, []);
 
 	return (
-		<AuthContext.Provider value={{ loginWidthGoogle, loginWithEmail, registerWithEmail, logout }}>
+		<AuthContext.Provider value={{loginWidthGoogle, loginWithEmail, registerWithEmail, logout}}>
 			{children}
 		</AuthContext.Provider>
 	);

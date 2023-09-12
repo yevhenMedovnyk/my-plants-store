@@ -1,14 +1,12 @@
-import { IShopItem } from './../types/IShopItem';
-import { IPlant } from './../types/IPlant';
-import axios from "axios";
-import { WISHLIST_URL } from "../constants/URLs";
-import { IUser } from '../types/IUser';
+import {IShopItem} from './../types/IShopItem';
+import {IPlant} from './../types/IPlant';
+import axios, { AxiosError } from 'axios';
+import {WISHLIST_URL} from '../constants/URLs';
+import {IUser} from '../types/IUser';
 
 interface IAddToWishlistProps extends IShopItem {
 	user?: IUser;
 }
-
-
 
 export const addToWishlist = async (props: IAddToWishlistProps) => {
 	try {
@@ -16,6 +14,7 @@ export const addToWishlist = async (props: IAddToWishlistProps) => {
 			...props,
 		});
 	} catch (error) {
-		console.log(error.message);
+		const errors = error as Error | AxiosError;
+		console.log(errors.message);
 	}
 };

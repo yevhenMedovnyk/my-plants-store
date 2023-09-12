@@ -9,9 +9,9 @@ import close from "./../../assets/images/close.png";
 import google from "./../../assets/images/google_icon.svg";
 
 import { setIsLoginRegisterOpened } from "../../store/Slices/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { UserAuth } from "../../context/AuthContext";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
 interface ILoginAndRegisterPopup {
 	handleCloseClick: () => void;
@@ -27,7 +27,7 @@ const LoginAndRegisterPopup: FC<ILoginAndRegisterPopup> = ({ handleCloseClick })
 
 	const { loginWidthGoogle, loginWithEmail, registerWithEmail } = UserAuth();
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const [switchValue, setSwitchValue] = useState<string>("login");

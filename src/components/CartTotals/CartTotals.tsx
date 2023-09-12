@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react";
 import style from "./cartTotals.module.scss";
 
 import Input from "../Shared/Input/Input";
-import { useDispatch, useSelector } from "react-redux";
 import {
 	setInputCoupon,
 	setCouponData,

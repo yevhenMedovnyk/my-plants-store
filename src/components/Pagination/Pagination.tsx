@@ -9,7 +9,7 @@ interface IPaginationProps {
 	currentPage: number;
 	totalCount: number;
 	pageLimit: number;
-	setCurrentPage: (selected: number) => void
+	setCurrentPage: (selected: number) => any
 }
 
 interface ISelectedItem {

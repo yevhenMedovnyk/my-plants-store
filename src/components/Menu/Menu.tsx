@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
-import style from "./menu.module.scss";
-import { FC } from "react";
+import {NavLink} from 'react-router-dom';
+import style from './menu.module.scss';
+import {FC} from 'react';
 
 interface IMenu {
 	onClickSearchIcon: () => void;
@@ -9,18 +9,20 @@ interface IMenu {
 	menuRef: any;
 }
 
-const Menu: FC<IMenu> = ({ isBurgerOpened, setIsBurgerOpened, menuRef }) => {
+const Menu: FC<IMenu> = ({isBurgerOpened, setIsBurgerOpened, menuRef}) => {
 	return (
-		<nav ref={menuRef} className={[style.menu, isBurgerOpened ? style.active : ""].join(" ")}>
+		<nav ref={menuRef} className={[style.menu, isBurgerOpened ? style.active : ''].join(' ')}>
 			<ul>
-				<li onClick={() => setIsBurgerOpened(false)} className={style.link}>
-					<NavLink to='/'>Home</NavLink>
+				<li className={style.link}>
+					<NavLink onClick={() => setIsBurgerOpened(false)} to="/">
+						Home
+					</NavLink>
 				</li>
 				<li
 					onClick={() => setIsBurgerOpened(false)}
-					className={[style.link, style.cartLink].join(" ")}
+					className={[style.link, style.cartLink].join(' ')}
 				>
-					<NavLink to='/cart'>Shopping cart</NavLink>
+					<NavLink to="/cart">Shopping cart</NavLink>
 				</li>
 			</ul>
 		</nav>
