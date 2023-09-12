@@ -24,3 +24,4 @@ Technologies:
 - VITE
 - React-paginate
 - React-responsive-carousel
+- ----------
