@@ -16,7 +16,7 @@ type ChildrenProps = {
 	children: string | JSX.Element | JSX.Element[];
 };
 
-const AuthContext = createContext();
+const AuthContext = createContext({});
 
 export const AuthContextProvider = ({children}: ChildrenProps) => {
 	const dispatch = useDispatch();
@@ -48,6 +48,7 @@ export const AuthContextProvider = ({children}: ChildrenProps) => {
 	const registerWithEmail = async (inputEmail: string, password: string, username: string) => {
 		try {
 			const userCredential = await createUserWithEmailAndPassword(auth, inputEmail, password);
+			//@ts-ignore
 			await updateProfile(auth.currentUser, {
 				displayName: username,
 			});

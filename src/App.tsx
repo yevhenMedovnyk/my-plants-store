@@ -14,7 +14,6 @@ import {RequireAuth} from './helpers/RequireAuth';
 import WishlistPage from './pages/WishlistPage/WishlistPage';
 import OrdersPage from './pages/OrdersPage/OrdersPage';
 import SearchPage from './pages/SearchPage/SearchPage';
-import {FC} from 'react';
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +28,7 @@ export const router = createBrowserRouter([
             {
                 path: '/plant/:id',
                 element: <ShopItemPage />,
-                loader: fetchData,
+                loader: fetchData as any,
             },
             {
                 path: '/search',

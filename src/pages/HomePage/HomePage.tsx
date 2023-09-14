@@ -1,24 +1,25 @@
-import { useEffect } from "react";
-import style from "./homePage.module.scss";
+import {useEffect} from 'react';
+import style from './homePage.module.scss';
 
-import MainSlider from "../../components/MainSlider/MainSlider";
-import ShopItem from "../../components/ShopItem/ShopItem";
-import Sort from "../../components/Sort/Sort";
-import Pagination from "../../components/Pagination/Pagination";
+import MainSlider from '../../components/MainSlider/MainSlider';
+import ShopItem from '../../components/ShopItem/ShopItem';
+import Sort from '../../components/Sort/Sort';
+import Pagination from '../../components/Pagination/Pagination';
 
-import { fetchPlants, setCurrentPage } from "../../store/Slices/mainSlice";
-import { PLANTS_URL } from "../../constants/URLs";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import {fetchPlants, setCurrentPage} from '../../store/Slices/mainSlice';
+import {PLANTS_URL} from '../../constants/URLs';
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
+import { PulseLoader } from 'react-spinners';
 
 const HomePage = () => {
 	const dispatch = useAppDispatch();
-	const { shopItems, currentPage, totalCount, status, pageLimit } = useAppSelector(
-		state => state.plants,
+	const {shopItems, currentPage, totalCount, status, pageLimit} = useAppSelector(
+		(state) => state.plants
 	);
-	const { order, sortby, category } = useAppSelector(state => state.sort);
+	const {order, sortby, category} = useAppSelector((state) => state.sort);
 	const filterByCategory = () => {
-		if (category === "All Plants") {
-			return "";
+		if (category === 'All Plants') {
+			return '';
 		}
 		return `&categories_like=${category}`;
 	};
@@ -29,8 +30,8 @@ const HomePage = () => {
 				`${PLANTS_URL}?
 				_page=${
 					currentPage + 1
-				}&_limit=${pageLimit}&_sort=${sortby}&_order=${order}${filterByCategory()}&_start=0&_end=1`,
-			),
+				}&_limit=${pageLimit}&_sort=${sortby}&_order=${order}${filterByCategory()}&_start=0&_end=1`
+			)
 		);
 	}, [currentPage, order, sortby, category]);
 
@@ -41,12 +42,15 @@ const HomePage = () => {
 				<div className={style.mainBlock}>
 					<Sort />
 					<div className={style.storeItems}>
-						{status === "loading" ? (
-							<p style={{ paddingBlock: 60, paddingLeft: 20 }}>Loading...</p>
+						{status === 'loading' ? (
+							<PulseLoader
+								color="#46a459"
+								cssOverride={{display: 'flex', justifyContent: 'center', marginBlock: '2rem'}}
+							/>
 						) : null}
-						{status === "resolved" && shopItems.map(item => <ShopItem key={item.id} {...item} />)}
+						{status === 'resolved' && shopItems.map((item) => <ShopItem key={item.id} {...item} />)}
 					</div>
-					{totalCount > pageLimit && status === "resolved" && (
+					{totalCount > pageLimit && status === 'resolved' && (
 						<Pagination
 							setCurrentPage={setCurrentPage}
 							currentPage={currentPage}
