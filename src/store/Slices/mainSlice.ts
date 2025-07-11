@@ -16,7 +16,7 @@ export const fetchPlants = createAsyncThunk<IShopItem[], string, { rejectValue: 
 	async (url, { rejectWithValue, dispatch }) => {
 		try {
 			const res = (await axios.get(url)) as any;
-			dispatch(setTotalCount(res.headers.get("X-Total-Count")));
+			dispatch(setTotalCount(res.headers.get["X-Total-Count"]));
 			return res.data;
 		} catch (error: any) {
 			console.log(error.message);
